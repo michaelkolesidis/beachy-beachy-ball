@@ -12,7 +12,7 @@ import useGame from "./stores/useGame.js";
 export default function Ball() {
   const ballTexture = useLoader(
     THREE.TextureLoader,
-    "./assets/beach_ball_texture.png"
+    "./textures/beach_ball_texture.png"
   );
 
   const body = useRef();
