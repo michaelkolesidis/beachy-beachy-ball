@@ -18,7 +18,6 @@
   -webkit-user-drag: none;
   -moz-user-drag: none;
   font-family: "Nickname", sans-serif;
-  color: var(--white);
 }
 
 html,
@@ -30,6 +29,7 @@ body,
   width: 100%;
   height: 100%;
   background: var(--white);
+  color: var(--white);
 }
 
 /******************/

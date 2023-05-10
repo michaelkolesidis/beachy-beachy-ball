@@ -85,7 +85,8 @@ export function BlockDoubleSpinner({ position = [0, 0, 0] }) {
   const obstacle1 = useRef();
   const obstacle2 = useRef();
 
-  const [speed] = useState(() => 2);
+  const [direction] = useState(() => (Math.random() < 0.5 ? -1 : 1));
+  const [speed] = useState(() => 2 * direction);
 
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
@@ -181,7 +182,74 @@ export function BlockLimbo({ position = [0, 0, 0] }) {
         <mesh
           geometry={boxGeometry}
           material={obstacleMaterial}
-          scale={[3.5, 0.3, 0.3]}
+          scale={[4, 0.3, 0.3]}
+          castShadow
+          receiveShadow
+        />
+      </RigidBody>
+    </group>
+  );
+}
+
+export function BlockDoubleLimbo({ position = [0, 0, 0] }) {
+  const obstacle1 = useRef();
+  const obstacle2 = useRef();
+  const [timeOffset] = useState(() => Math.random() * Math.PI * 2);
+
+  useFrame((state) => {
+    const time = state.clock.getElapsedTime();
+    const y1 = 0.3 * Math.sin(1.5 * time + timeOffset) + 1.3;
+    obstacle1.current.setNextKinematicTranslation({
+      x: position[0],
+      y: position[1] + y1 + 0.2,
+      z: position[2],
+    });
+
+    const y2 = -0.3 * Math.sin(1.5 * time + timeOffset) + 1.3;
+    obstacle2.current.setNextKinematicTranslation({
+      x: position[0],
+      y: position[1] + y2 - 0.8,
+      z: position[2],
+    });
+  });
+
+  return (
+    <group position={position}>
+      <mesh
+        geometry={boxGeometry}
+        material={beachMaterial}
+        position={[0, -0.1, 0]}
+        scale={[
+          blockDimensions.width,
+          blockDimensions.height,
+          blockDimensions.length,
+        ]}
+        receiveShadow
+      />
+      <RigidBody
+        ref={obstacle1}
+        type="kinematicPosition"
+        restitution={0.2}
+        friction={0}
+      >
+        <mesh
+          geometry={boxGeometry}
+          material={obstacleMaterial}
+          scale={[4, 0.3, 0.3]}
+          castShadow
+          receiveShadow
+        />
+      </RigidBody>
+      <RigidBody
+        ref={obstacle2}
+        type="kinematicPosition"
+        restitution={0.2}
+        friction={0}
+      >
+        <mesh
+          geometry={boxGeometry}
+          material={obstacleMaterial}
+          scale={[4, 0.3, 0.3]}
           castShadow
           receiveShadow
         />
@@ -226,7 +294,75 @@ export function BlockSlidingWall({ position = [0, 0, 0] }) {
         <mesh
           geometry={boxGeometry}
           material={obstacleMaterial}
-          scale={[1.5, 1.8, 0.3]}
+          scale={[1.7, 1.8, 0.3]}
+          castShadow
+          receiveShadow
+        />
+      </RigidBody>
+    </group>
+  );
+}
+
+export function BlockDoubleSlidingWall({ position = [0, 0, 0] }) {
+  const wall1 = useRef();
+  const wall2 = useRef();
+
+  const [timeOffset] = useState(() => Math.random() * Math.PI * 2);
+
+  useFrame((state) => {
+    const time = state.clock.getElapsedTime();
+    const x1 = Math.sin(2 * time + timeOffset) * 0.5 + 1;
+    wall1.current.setNextKinematicTranslation({
+      x: position[0] + x1,
+      y: position[1] + 0.75,
+      z: position[2],
+    });
+
+    const x2 = -Math.sin(2 * time + timeOffset) * 0.5 - 1;
+    wall2.current.setNextKinematicTranslation({
+      x: position[0] + x2,
+      y: position[1] + 0.75,
+      z: position[2],
+    });
+  });
+
+  return (
+    <group position={position}>
+      <mesh
+        geometry={boxGeometry}
+        material={beachMaterial}
+        position={[0, -0.1, 0]}
+        scale={[
+          blockDimensions.width,
+          blockDimensions.height,
+          blockDimensions.length,
+        ]}
+        receiveShadow
+      />
+      <RigidBody
+        ref={wall1}
+        type="kinematicPosition"
+        restitution={0.2}
+        friction={0}
+      >
+        <mesh
+          geometry={boxGeometry}
+          material={obstacleMaterial}
+          scale={[1, 1.8, 0.3]}
+          castShadow
+          receiveShadow
+        />
+      </RigidBody>
+      <RigidBody
+        ref={wall2}
+        type="kinematicPosition"
+        restitution={0.2}
+        friction={0}
+      >
+        <mesh
+          geometry={boxGeometry}
+          material={obstacleMaterial}
+          scale={[1, 1.8, 0.3]}
           castShadow
           receiveShadow
         />

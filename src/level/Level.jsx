@@ -11,7 +11,9 @@ import {
   BlockSpinner,
   BlockDoubleSpinner,
   BlockLimbo,
+  BlockDoubleLimbo,
   BlockSlidingWall,
+  BlockDoubleSlidingWall,
   BlockEnd,
 } from "./components/Blocks.jsx";
 
@@ -32,7 +34,14 @@ export function Bounds({ length = 1 }) {
 
 export function Level({
   count = 5,
-  types = [BlockSpinner, BlockDoubleSpinner, BlockSlidingWall, BlockLimbo],
+  types = [
+    BlockSpinner,
+    BlockDoubleSpinner,
+    BlockSlidingWall,
+    BlockDoubleSlidingWall,
+    BlockLimbo,
+    BlockDoubleLimbo,
+  ],
   seed = 0,
 }) {
   const blocks = useMemo(() => {

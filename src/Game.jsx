@@ -13,15 +13,18 @@ import Ball from "./Ball.jsx";
 import Effects from "./Effects.jsx";
 import useGame from "./stores/useGame.js";
 import { SoundManager } from "./utils/SoundManager.jsx";
+import { useState } from "react";
 
 export default function Experience() {
   const blocksCount = useGame((state) => state.blocksCount);
   const blocksSeed = useGame((state) => state.blocksSeed);
 
+  const [showPerformance, setShowperformance] = useState(false)
+
   return (
     <>
       <color args={["#00bfff"]} attach="background" />
-      <Perf position="bottom-left" />
+      {showPerformance && <Perf position="bottom-left" />}
       <Physics debug={false}>
         <Lights />
         <Level
