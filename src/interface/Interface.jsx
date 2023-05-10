@@ -1,3 +1,7 @@
+// Copyright (c) 2023 Michael Kolesidis (michael.kolesidis@gmail.com)
+// Licensed under the GNU Affero General Public License v3.0.
+// https://www.gnu.org/licenses/gpl-3.0.html
+
 import { useKeyboardControls } from "@react-three/drei";
 import { useEffect, useRef, useState } from "react";
 import { addEffect } from "@react-three/fiber";
@@ -105,7 +109,6 @@ export default function Interface() {
             <div className={`key large ${jump ? "active" : ""}`}></div>
           </div>
         </div>
-
         {/* Time */}
         <div>
           <div className="time-label">Time</div>
@@ -126,7 +129,6 @@ export default function Interface() {
                 className="modal-button"
                 onClick={() => {
                   clearData();
-                  // handleRestart();
                 }}
               >
                 Clear Data

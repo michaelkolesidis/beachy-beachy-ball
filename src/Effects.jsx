@@ -1,4 +1,8 @@
-import { SSR, DepthOfField, EffectComposer } from "@react-three/postprocessing";
+// Copyright (c) 2023 Michael Kolesidis (michael.kolesidis@gmail.com)
+// Licensed under the GNU Affero General Public License v3.0.
+// https://www.gnu.org/licenses/gpl-3.0.html
+
+import { SSR, EffectComposer } from "@react-three/postprocessing";
 
 export default function Effects() {
   return (
@@ -29,7 +33,6 @@ export default function Effects() {
         resolutionScale={1}
         velocityResolutionScale={1}
       />
-      {/* <DepthOfField focusDistance={0.01} focalLength={0.2} bokehScale={3} /> */}
     </EffectComposer>
   );
 }

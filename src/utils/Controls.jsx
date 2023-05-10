@@ -1,3 +1,7 @@
+// Copyright (c) 2023 Michael Kolesidis (michael.kolesidis@gmail.com)
+// Licensed under the GNU Affero General Public License v3.0.
+// https://www.gnu.org/licenses/gpl-3.0.html
+
 import { KeyboardControls } from "@react-three/drei";
 
 const controls = [
@@ -10,8 +14,8 @@ const controls = [
   { name: "audio", keys: ["KeyM"] },
 ];
 
-function PlayerControls({ children }) {
+function Controls({ children }) {
   return <KeyboardControls map={controls}>{children}</KeyboardControls>;
 }
 
-export default PlayerControls;
+export default Controls;

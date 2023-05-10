@@ -1,3 +1,7 @@
+// Copyright (c) 2023 Michael Kolesidis (michael.kolesidis@gmail.com)
+// Licensed under the GNU Affero General Public License v3.0.
+// https://www.gnu.org/licenses/gpl-3.0.html
+
 import { useRapier, RigidBody } from "@react-three/rapier";
 import { useFrame, useLoader } from "@react-three/fiber";
 import { useKeyboardControls } from "@react-three/drei";
@@ -5,7 +9,7 @@ import { useState, useEffect, useRef } from "react";
 import * as THREE from "three";
 import useGame from "./stores/useGame.js";
 
-export default function Player() {
+export default function Ball() {
   const ballTexture = useLoader(
     THREE.TextureLoader,
     "./assets/beach_ball_texture.png"
@@ -92,8 +96,8 @@ export default function Player() {
     const impulse = { x: 0, y: 0, z: 0 };
     const torque = { x: 0, y: 0, z: 0 };
 
-    const impulseStrength = 0.6 * delta; // original 0.6
-    const torqueStrength = 0.2 * delta; // original 0.2
+    const impulseStrength = 0.6 * delta;
+    const torqueStrength = 0.2 * delta;
 
     if (forward) {
       impulse.z -= impulseStrength;
@@ -139,12 +143,8 @@ export default function Player() {
     state.camera.lookAt(smoothedCameraTarget);
 
     /**
-     * Phases
+     * Restart
      */
-    if (bodyPosition.z < -(blocksCount * 4 + 2)) {
-      end();
-    }
-
     if (bodyPosition.y < -4) {
       restart();
     }
@@ -152,6 +152,7 @@ export default function Player() {
 
   return (
     <RigidBody
+      name="ball"
       ref={body}
       colliders="ball"
       restitution={0.2}
@@ -160,7 +161,7 @@ export default function Player() {
       angulularDamping={0.5}
       position={[0, 1, 0]}
     >
-      <mesh castShadow>
+      <mesh castShadow receiveShadow>
         <sphereGeometry args={[0.3, 128, 128]} />
         <meshStandardMaterial map={ballTexture} flatShading />
       </mesh>
