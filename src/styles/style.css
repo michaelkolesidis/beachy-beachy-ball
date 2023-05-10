@@ -1,0 +1,300 @@
+@font-face {
+  font-family: "Nickname";
+  src: url("../fonts/nickname.otf");
+}
+
+/***********/
+/* GENERAL */
+/***********/
+:root {
+  --white: rgb(255, 255, 255);
+  --black: rgb(30, 30, 30);
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  user-select: none;
+  -webkit-user-drag: none;
+  -moz-user-drag: none;
+  font-family: "Nickname", sans-serif;
+  color: var(--white);
+}
+
+html,
+body,
+#root {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: var(--white);
+}
+
+/*************/
+/* INTERFACE */
+/*************/
+.interface {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.logo {
+  width: 70px;
+  padding: 1em;
+  transform: rotateZ(-10deg);
+  pointer-events: none;
+}
+
+/*******************/
+/* CONTROL BUTTONS */
+/*******************/
+.control-buttons {
+  background: #00000000;
+  position: fixed;
+  top: 0;
+  right: 0;
+  z-index: 2;
+  margin: 2.2rem;
+  display: flex;
+  flex-direction: row;
+}
+
+.control-button {
+  border: 3px solid #ffffff;
+  border-radius: 60px;
+  padding: 8px;
+  margin-left: 20px;
+  line-height: 10px;
+  cursor: pointer;
+  transition: opacity 0.5s cubic-bezier(0.19, 1.51, 0.29, 0.99);
+}
+
+.control-button:hover {
+  opacity: 0.6;
+}
+
+/***********/
+/* BOTTOM  */
+/***********/
+.bottom {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  position: absolute;
+  bottom: -10px;
+  pointer-events: none;
+}
+
+/***********/
+/* TIME    */
+/***********/
+.time-label {
+  padding-top: 30px;
+  font-size: 3vh;
+}
+
+.time {
+  width: 200px;
+  height: 100px;
+  color: #ffffff;
+  font-size: 6vh;
+  padding: 0 50px 30px 0;
+  text-align: left;
+  letter-spacing: 3px;
+}
+
+/***********/
+/* RESTART */
+/***********/
+.restart {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  color: #ffffff;
+  font-size: 80px;
+  opacity: 0.8;
+  background: #0000003e;
+  padding-top: 10px;
+  pointer-events: auto;
+}
+
+.restart-button {
+  width: 200px;
+  height: 200px;
+  transition: transform 0.75s cubic-bezier(0.19, 1.51, 0.29, 0.99);
+
+  cursor: pointer;
+}
+
+.restart-button:hover {
+  transform: rotateZ(-180deg);
+}
+
+/************/
+/* CONTROLS */
+/************/
+.controls {
+  padding: 0 80px;
+}
+
+.controls .raw {
+  display: flex;
+  justify-content: center;
+}
+
+.controls .key {
+  width: 25px;
+  height: 25px;
+  margin: 3px;
+  border: 4px solid #ffffff;
+  background: #ffffff25;
+  border-radius: 10px;
+}
+
+.controls .key.large {
+  width: 110px;
+}
+
+.controls .key.active {
+  background: #ffffffa2;
+}
+
+/*******************/
+/* MODAL           */
+/*******************/
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  z-index: 2;
+  align-items: center;
+  justify-content: center;
+  background: rgba(31, 31, 31, 0.4);
+}
+
+.modal * {
+  color: var(--black);
+}
+
+.modal-box {
+  background: var(--white);
+  width: 30vw;
+  height: fit-content;
+  padding: 1vh 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 50px;
+  z-index: 3;
+  text-align: center;
+  box-shadow: 0 0 20px var(--white);
+}
+
+.modal-title {
+  font-size: min(6vw, 7vh);
+  margin: 3vh;
+}
+
+.section-title {
+  font-size: min(4vw, 5vh);
+  margin-bottom: 1.5vh;
+}
+
+.mode-area {
+  margin-bottom: 4vh;
+  perspective: 1000px;
+  perspective-origin: 50%;
+}
+
+.mode-selection {
+  cursor: pointer;
+  font-size: min(2vw, 2vh);
+  padding: min(0.6vw, 0.6vh);
+}
+
+.selected-mode {
+  color: rgb(191, 191, 191);
+}
+
+.modal-button {
+  cursor: pointer;
+  color: var(--white);
+  background-color: var(--black);
+  border-radius: 50px;
+  font-size: min(2vw, 2vh);
+  padding: min(1.6vw, 1.6vh) min(3vw, 3vh);
+  margin-bottom: 1.5vh;
+}
+
+.mode-selection {
+  transition: transform 0.75s 0.1s cubic-bezier(0.19, 1.51, 0.29, 0.99);
+}
+
+.mode-selection:hover {
+  transform: translateZ(25px);
+}
+
+.modal-button {
+  transition: scale 1s 0.1s cubic-bezier(0.19, 1.51, 0.29, 0.99);
+}
+
+.modal-button:hover {
+  scale: 1.1;
+}
+
+.modal-about-area {
+  margin: 2vh;
+}
+
+.modal-about {
+  font-size: min(1.6vw, 1.6vh);
+}
+
+/******************/
+/* LOADING SCREEN */
+/******************/
+.loading {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: #00bfff;
+}
+
+.loading-text {
+  font-family: Nickname, sans-serif;
+  margin: auto;
+  animation: loading 0.5s linear infinite;
+  background: #ffffff00;
+  font-size: 4em;
+  color: #ffffff;
+}
+
+@keyframes loading {
+  0%,
+  100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: 0.6;
+  }
+}
