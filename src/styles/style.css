@@ -70,7 +70,6 @@ body,
 }
 
 .play-button {
-  cursor: pointer;
   color: var(--blue);
   background-color: var(--white);
   font-size: 60px;
@@ -79,6 +78,60 @@ body,
   padding: 20px 60px 10px 60px;
   border-radius: 50px;
   margin: 100px 0 10px 0;
+  cursor: pointer;
+  transition: scale 0.4s 0.2s cubic-bezier(0.19, 1.51, 0.29, 0.99);
+}
+
+.play-button:hover {
+  scale: 1.1;
+}
+
+.main-menu-mode {
+  margin-top: 30px;
+  font-size: 40px;
+}
+
+.main-menu-modes {
+  display: flex;
+}
+
+.main-menu-mode-selection {
+  font-size: 25px;
+  width: 200px;
+  text-align: center;
+  margin: 5px 0;
+  cursor: pointer;
+  padding: 10px 20px 5px 20px;
+  box-sizing: border-box;
+  border-radius: 50px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: scale 0.4s 0.2s cubic-bezier(0.19, 1.51, 0.29, 0.99);
+}
+
+.main-menu-mode-selection:hover {
+  scale: 1.1;
+}
+
+.main-menu-mode-selected {
+  border: 3px dashed white;
+}
+
+.main-menu-about-section {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-size: 25px;
+  margin: 20px;
+}
+
+.author-logo {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 70px;
+  margin: 20px;
 }
 
 /******************/
