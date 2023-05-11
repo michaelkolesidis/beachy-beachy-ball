@@ -4,10 +4,9 @@
 
 import {} from "@react-three/drei";
 import { Physics } from "@react-three/rapier";
-import * as THREE from "three";
 import { Perf } from "r3f-perf";
 import Lights from "./Lights.jsx";
-import { Level } from "./level/Level.jsx";
+import { RandomLevel } from "./level/Level.jsx";
 
 import Ball from "./Ball.jsx";
 import Effects from "./Effects.jsx";
@@ -16,6 +15,8 @@ import { SoundManager } from "./utils/SoundManager.jsx";
 import { useState } from "react";
 
 export default function Experience() {
+  const mode = useGame((state) => state.mode);
+
   const blocksCount = useGame((state) => state.blocksCount);
   const blocksSeed = useGame((state) => state.blocksSeed);
 
@@ -27,7 +28,7 @@ export default function Experience() {
       {showPerformance && <Perf position="bottom-left" />}
       <Physics debug={false}>
         <Lights />
-        <Level
+        <RandomLevel
           count={blocksCount}
           seed={blocksSeed}
           // types={[BlockSpinner]}

@@ -376,10 +376,6 @@ export function BlockEnd({ position = [0, 0, 0] }) {
 
   function onHit() {
     end();
-
-    // hitSound.currentTime = 0
-    // hitSound.volume = Math.random() * 0.1
-    // hitSound.play()
   }
 
   return (

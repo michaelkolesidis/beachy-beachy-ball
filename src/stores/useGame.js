@@ -10,25 +10,69 @@ export default create(
   subscribeWithSelector((set) => {
     return {
       /**
-       * Level
+       * Is the player in the game or in the main menu?
        */
-      level: 0,
+      isInGame: false,
+      proceedToGame: () => {
+        set(() => {
+          return {
+            isInGame: true,
+          };
+        });
+      },
 
       /**
-       * Level generation
+       * Mode
+       */
+      mode: getLocalStorage("mode") || "random", // "random", "adventure"
+      setMode: (gameMode) => {
+        set(() => {
+          return {
+            mode: gameMode,
+          };
+        });
+      },
+
+      /**
+       * Random level generation
        */
       blocksCount: 10,
       blocksSeed: 0,
 
       /**
-       * Mode
+       * Level (adventure)
        */
-      mode: "random", // "random", "adventure"
+      level: getLocalStorage("level") || 1,
+      nextLevel: () => set((state) => ({ level: Number(state.level) + 1 })),
+      resetLevel: () => {
+        set(() => {
+          return {
+            level: 1,
+          };
+        });
+      },
+      setLevel: (num) => {
+        set(() => {
+          return {
+            level: num,
+          };
+        });
+      },
 
       /**
-       * High score
+       * High scores
        */
-      highScore: getLocalStorage("highScore") || 0,
+      highScoreRandom: getLocalStorage("highScoreRandom") || 0,
+      highScoreLevel1: getLocalStorage("highScoreLevel1") || 0,
+      highScoreLevel2: getLocalStorage("highScoreLevel2") || 0,
+      highScoreLevel3: getLocalStorage("highScoreLevel3") || 0,
+      highScoreLevel4: getLocalStorage("highScoreLevel4") || 0,
+      highScoreLevel5: getLocalStorage("highScoreLevel5") || 0,
+      highScoreLevel6: getLocalStorage("highScoreLevel6") || 0,
+      highScoreLevel7: getLocalStorage("highScoreLevel7") || 0,
+      highScoreLevel8: getLocalStorage("highScoreLevel8") || 0,
+      highScoreLevel9: getLocalStorage("highScoreLevel9") || 0,
+      highScoreLevel10: getLocalStorage("highScoreLevel10") || 0,
 
       /**
        * Time
@@ -64,14 +108,18 @@ export default create(
           if (state.phase === "playing") {
             const endTime = Date.now();
             const score = endTime - state.startTime;
-            const highScore =
-              state.highScore === 0 || score < state.highScore
-                ? score
-                : state.highScore;
 
-            setLocalStorage("highScore", highScore);
+            if (state.mode === "random") {
+              const highScoreRandom =
+                state.highScoreRandom === 0 || score < state.highScoreRandom
+                  ? score
+                  : state.highScoreRandom;
 
-            return { phase: "ended", endTime, highScore };
+              setLocalStorage("highScoreRandom", highScoreRandom);
+              return { phase: "ended", endTime, highScoreRandom };
+            } else if (state.mode === "adventure") {
+              // TODO: Implement levels high score
+            }
           }
           return {};
         });

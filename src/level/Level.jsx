@@ -32,7 +32,7 @@ export function Bounds({ length = 1 }) {
   );
 }
 
-export function Level({
+export function RandomLevel({
   count = 5,
   types = [
     BlockSpinner,

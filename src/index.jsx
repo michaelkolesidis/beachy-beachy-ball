@@ -5,42 +5,13 @@
 import "./styles/style.css";
 import { Suspense } from "react";
 import ReactDOM from "react-dom/client";
-import { Canvas } from "@react-three/fiber";
 import Loading from "./interface/Loading";
-import Game from "./Game.jsx";
-import Interface from "./interface/Interface";
-import ShortcutManager from "./utils/ShortcutManager";
-import Controls from "./utils/Controls";
+import App from "./App";
 
 const root = ReactDOM.createRoot(document.querySelector("#root"));
 
-// Prevent right click
-document.addEventListener("contextmenu", (e) => e.preventDefault());
-
-// Keep console clear of logs
-const log = console.log;
-console.log = () => {};
-const warn = console.warn;
-console.warn = () => {};
-const error = console.error;
-console.error = () => {};
-
 root.render(
   <Suspense fallback={<Loading />}>
-    <Controls>
-      <Canvas
-        shadows
-        camera={{
-          fov: 45,
-          near: 0.1,
-          far: 200,
-          position: [2.5, 4, 6],
-        }}
-      >
-        <Game />
-      </Canvas>
-      <Interface />
-      <ShortcutManager />
-    </Controls>
+    <App />
   </Suspense>
 );

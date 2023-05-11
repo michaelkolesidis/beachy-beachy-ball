@@ -16,5 +16,7 @@ export default {
     outDir: "../dist",
     emptyOutDir: true,
     sourcemap: true,
+    minify: "esbuild",
+    cssMinify: true,
   },
 };

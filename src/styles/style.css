@@ -9,6 +9,7 @@
 :root {
   --white: rgb(255, 255, 255);
   --black: rgb(30, 30, 30);
+  --blue: #00bfff;
 }
 
 * {
@@ -30,6 +31,54 @@ body,
   height: 100%;
   background: var(--white);
   color: var(--white);
+  background: var(--blue);
+}
+
+/******************/
+/* MAIN MENU      */
+/******************/
+.main-menu {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: start;
+  align-items: center;
+  background: var(--blue);
+}
+
+.logo-ball {
+  width: 200px;
+  margin: 100px 0 10px 0;
+  animation: spin 3s cubic-bezier(0.19, 1.51, 0.29, 0.99) infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.woodmark {
+  width: 220px;
+}
+
+.play-button {
+  cursor: pointer;
+  color: var(--blue);
+  background-color: var(--white);
+  font-size: 60px;
+  height: 60px;
+  line-height: 60px;
+  padding: 20px 60px 10px 60px;
+  border-radius: 50px;
+  margin: 100px 0 10px 0;
 }
 
 /******************/
@@ -297,4 +346,59 @@ body,
 
 .modal-about {
   font-size: min(1.6vw, 1.6vh);
+}
+
+@media only screen and (max-width: 900px) {
+  .logo {
+    width: 9vh;
+  }
+
+  .individual-score {
+    margin-right: 1.5vw;
+    margin-left: 1.5vw;
+    font-size: 2.75vh;
+  }
+
+  .mode-info {
+    top: -1.3vh;
+    font-size: 1.3vh;
+  }
+
+  .modal-box {
+    width: 75vw;
+    height: 70vh;
+    border-radius: 30px;
+  }
+
+  .modal-title {
+    font-size: 7.5vh;
+    margin: 3vh;
+  }
+
+  .section-title {
+    font-size: 5vh;
+    margin-bottom: 2vh;
+  }
+
+  .mode-area {
+    margin-bottom: 5vh;
+  }
+
+  .mode-selection,
+  .modal-button {
+    font-size: 3vh;
+    padding: 1vh;
+  }
+  .modal-button:hover,
+  .mode-selection:hover {
+    transform: none;
+  }
+
+  .modal-about-area {
+    margin: 2vh;
+  }
+
+  .modal-about {
+    font-size: 1.75vh;
+  }
 }

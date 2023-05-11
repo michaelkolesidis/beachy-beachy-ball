@@ -7,7 +7,7 @@ import { useEffect, useRef, useState } from "react";
 import { addEffect } from "@react-three/fiber";
 import useGame from "../stores/useGame.js";
 import useAudio from "../stores/useAudio.js";
-import Logo from "../assets/beachy_beachy_ball_white.svg";
+import Logo from "../assets/logo_white.svg";
 
 export default function Interface() {
   const time = useRef();

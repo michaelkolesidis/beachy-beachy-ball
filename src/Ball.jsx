@@ -21,15 +21,12 @@ export default function Ball() {
   const rapierWorld = world.raw();
 
   const [smoothedCameraPosition] = useState(
-    () => new THREE.Vector3(10, 10, 10)
+    () => new THREE.Vector3(0, -5, -20) // initial camera position
   );
   const [smoothedCameraTarget] = useState(() => new THREE.Vector3());
 
   const start = useGame((state) => state.start);
-  const end = useGame((state) => state.end);
   const restart = useGame((state) => state.restart);
-
-  const blocksCount = useGame((state) => state.blocksCount);
 
   const jump = () => {
     const origin = body.current.translation();
@@ -150,6 +147,13 @@ export default function Ball() {
     }
   });
 
+  function onHit() {
+    // console.log("Ball hit something!")
+    // hitSound.currentTime = 0
+    // hitSound.volume = Math.random() * 0.1
+    // hitSound.play()
+  }
+
   return (
     <RigidBody
       name="ball"
@@ -160,6 +164,7 @@ export default function Ball() {
       linearDamping={0.5}
       angulularDamping={0.5}
       position={[0, 1, 0]}
+      // onCollisionEnter={onHit}
     >
       <mesh castShadow receiveShadow>
         <sphereGeometry args={[0.3, 128, 128]} />
