@@ -5,6 +5,7 @@
 import { useMemo } from "react";
 import { CuboidCollider, RigidBody } from "@react-three/rapier";
 import * as THREE from "three";
+import useGame from "../stores/useGame.js";
 import {
   blockDimensions,
   BlockEmpty,
@@ -16,6 +17,7 @@ import {
   BlockDoubleSlidingWall,
   BlockEnd,
 } from "./components/Blocks.jsx";
+import levels from "./components/Levels.jsx";
 
 THREE.ColorManagement.enabled = true;
 
@@ -54,6 +56,40 @@ export function RandomLevel({
 
     return blocks;
   }, [count, types, seed]);
+
+  return (
+    <>
+      <BlockEmpty position={[0, 0, 0]} />
+
+      {blocks.map((Block, index) => (
+        <Block key={index} position={[0, 0, -(index + 1) * 4]} />
+      ))}
+      <BlockEmpty position={[0, 0, -(count + 1) * 4]} />
+      <BlockEnd position={[0, 0, -(count + 2) * 4]} />
+      <Bounds length={count + 3} />
+    </>
+  );
+}
+
+export function TourLevel({}) {
+  const level = useGame((state) => state.level);
+
+  let currentLevel;
+
+  switch (level) {
+    case "copacabana":
+      currentLevel = 0;
+      break;
+    case "santamonica":
+      currentLevel = 1;
+      break;
+  }
+
+  let name, count, blocks;
+
+  name = levels[currentLevel].name;
+  count = levels[currentLevel].count;
+  blocks = levels[currentLevel].blocks;
 
   return (
     <>

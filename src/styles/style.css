@@ -32,6 +32,7 @@ body,
   background: var(--white);
   color: var(--white);
   background: var(--blue);
+  overflow: hidden;
 }
 
 /******************/
@@ -86,18 +87,18 @@ body,
   scale: 1.1;
 }
 
-.main-menu-mode {
+.main-menu-section-title {
   margin-top: 30px;
   font-size: 40px;
 }
 
-.main-menu-modes {
+.main-menu-selection-area {
   display: flex;
 }
 
-.main-menu-mode-selection {
+.main-menu-selection {
   font-size: 25px;
-  width: 200px;
+  width: 220px;
   text-align: center;
   margin: 5px 0;
   cursor: pointer;
@@ -110,11 +111,11 @@ body,
   transition: scale 0.4s 0.2s cubic-bezier(0.19, 1.51, 0.29, 0.99);
 }
 
-.main-menu-mode-selection:hover {
+.main-menu-selection:hover {
   scale: 1.1;
 }
 
-.main-menu-mode-selected {
+.main-menu-selected {
   border: 5px dashed white;
 }
 

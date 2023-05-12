@@ -17,6 +17,9 @@ export const blockDimensions = {
   length: 4,
 };
 
+/**
+ * BlockEmpty
+ */
 export function BlockEmpty({ position = [0, 0, 0] }) {
   return (
     <group position={position}>
@@ -35,6 +38,9 @@ export function BlockEmpty({ position = [0, 0, 0] }) {
   );
 }
 
+/**
+ * BlockSpinner
+ */
 export function BlockSpinner({ position = [0, 0, 0] }) {
   const obstacle = useRef();
   const [speed] = useState(
@@ -80,6 +86,9 @@ export function BlockSpinner({ position = [0, 0, 0] }) {
   );
 }
 
+/**
+ * BlockDoubleSpinner
+ */
 export function BlockDoubleSpinner({ position = [0, 0, 0] }) {
   const obstacle1 = useRef();
   const obstacle2 = useRef();
@@ -145,6 +154,9 @@ export function BlockDoubleSpinner({ position = [0, 0, 0] }) {
   );
 }
 
+/**
+ * BlockLimbo
+ */
 export function BlockLimbo({ position = [0, 0, 0] }) {
   const obstacle = useRef();
   const [timeOffset] = useState(() => Math.random() * Math.PI * 2);
@@ -190,6 +202,9 @@ export function BlockLimbo({ position = [0, 0, 0] }) {
   );
 }
 
+/**
+ * BlockDoubleLimbo
+ */
 export function BlockDoubleLimbo({ position = [0, 0, 0] }) {
   const obstacle1 = useRef();
   const obstacle2 = useRef();
@@ -257,6 +272,9 @@ export function BlockDoubleLimbo({ position = [0, 0, 0] }) {
   );
 }
 
+/**
+ * BlockSlidingWall
+ */
 export function BlockSlidingWall({ position = [0, 0, 0] }) {
   const obstacle = useRef();
   const [timeOffset] = useState(() => Math.random() * Math.PI * 2);
@@ -302,6 +320,9 @@ export function BlockSlidingWall({ position = [0, 0, 0] }) {
   );
 }
 
+/**
+ * BlockDoubleSlidingWall
+ */
 export function BlockDoubleSlidingWall({ position = [0, 0, 0] }) {
   const wall1 = useRef();
   const wall2 = useRef();
@@ -370,9 +391,11 @@ export function BlockDoubleSlidingWall({ position = [0, 0, 0] }) {
   );
 }
 
+/**
+ * BlockEnd
+ */
 export function BlockEnd({ position = [0, 0, 0] }) {
   const end = useGame((state) => state.end);
-  const phase = useGame((state) => state.phase);
 
   function onHit() {
     end();

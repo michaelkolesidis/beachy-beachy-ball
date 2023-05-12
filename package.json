@@ -1,6 +1,7 @@
 {
   "name": "beachy-beachy-ball",
   "author": "Michael Kolesidis",
+  "license": "AGPL-3.0-or-later",
   "private": true,
   "version": "0.0.0",
   "type": "module",

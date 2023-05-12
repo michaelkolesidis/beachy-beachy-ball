@@ -6,21 +6,36 @@ import {} from "@react-three/drei";
 import { Physics } from "@react-three/rapier";
 import { Perf } from "r3f-perf";
 import Lights from "./Lights.jsx";
-import { RandomLevel } from "./level/Level.jsx";
+import { RandomLevel, TourLevel } from "./level/Level.jsx";
 
 import Ball from "./Ball.jsx";
 import Effects from "./Effects.jsx";
 import useGame from "./stores/useGame.js";
+import useAudio from "./stores/useAudio.js";
 import { SoundManager } from "./utils/SoundManager.jsx";
 import { useState } from "react";
 
 export default function Experience() {
   const mode = useGame((state) => state.mode);
+  const restart = useGame((state) => state.restart);
+  const toggleAudio = useAudio((state) => state.toggleAudio);
 
   const blocksCount = useGame((state) => state.blocksCount);
   const blocksSeed = useGame((state) => state.blocksSeed);
 
   const [showPerformance, setShowperformance] = useState(false);
+
+  document.addEventListener("keydown", (e) => {
+    // Restart game
+    if (e.code === "KeyR") {
+      restart();
+    }
+
+    // Toggle sound
+    if (e.code === "KeyM") {
+      toggleAudio();
+    }
+  });
 
   return (
     <>
@@ -28,11 +43,17 @@ export default function Experience() {
       {showPerformance && <Perf position="bottom-left" />}
       <Physics debug={false}>
         <Lights />
-        <RandomLevel
-          count={blocksCount}
-          seed={blocksSeed}
-          // types={[BlockSpinner]}
-        />
+
+        {mode === "random" ? (
+          <RandomLevel
+            count={blocksCount}
+            seed={blocksSeed}
+            // types={[BlockSpinner]}
+          />
+        ) : (
+          <TourLevel />
+        )}
+
         <Ball />
         <SoundManager />
       </Physics>

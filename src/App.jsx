@@ -6,7 +6,6 @@ import { Canvas } from "@react-three/fiber";
 import useGame from "./stores/useGame.js";
 import Game from "./Game.jsx";
 import Interface from "./interface/Interface";
-import ShortcutManager from "./utils/ShortcutManager";
 import Controls from "./utils/Controls";
 import MainMenu from "./interface/MainMenu.jsx";
 
@@ -40,7 +39,6 @@ export default function App() {
             <Game />
           </Canvas>
           <Interface />
-          <ShortcutManager />
         </Controls>
       ) : (
         <MainMenu />

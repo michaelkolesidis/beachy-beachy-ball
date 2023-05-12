@@ -10,8 +10,6 @@ const controls = [
   { name: "leftward", keys: ["ArrowLeft", "KeyA"] },
   { name: "rightward", keys: ["ArrowRight", "KeyD"] },
   { name: "jump", keys: ["Space"] },
-  { name: "reset", keys: ["KeyR"] },
-  { name: "audio", keys: ["KeyM"] },
 ];
 
 function Controls({ children }) {

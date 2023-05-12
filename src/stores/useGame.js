@@ -24,8 +24,9 @@ export default create(
       /**
        * Mode
        */
-      mode: getLocalStorage("mode") || "random", // "random", "adventure"
+      mode: getLocalStorage("mode") || "random", // "random", "tour"
       setMode: (gameMode) => {
+        setLocalStorage("mode", gameMode);
         set(() => {
           return {
             mode: gameMode,
@@ -40,21 +41,14 @@ export default create(
       blocksSeed: 0,
 
       /**
-       * Level (adventure)
+       * Level (tour)
        */
-      level: getLocalStorage("level") || 1,
-      nextLevel: () => set((state) => ({ level: Number(state.level) + 1 })),
-      resetLevel: () => {
+      level: getLocalStorage("level") || "copacabana",
+      setLevel: (name) => {
         set(() => {
+          setLocalStorage("level", name);
           return {
-            level: 1,
-          };
-        });
-      },
-      setLevel: (num) => {
-        set(() => {
-          return {
-            level: num,
+            level: name,
           };
         });
       },
@@ -63,16 +57,8 @@ export default create(
        * High scores
        */
       highScoreRandom: getLocalStorage("highScoreRandom") || 0,
-      highScoreLevel1: getLocalStorage("highScoreLevel1") || 0,
-      highScoreLevel2: getLocalStorage("highScoreLevel2") || 0,
-      highScoreLevel3: getLocalStorage("highScoreLevel3") || 0,
-      highScoreLevel4: getLocalStorage("highScoreLevel4") || 0,
-      highScoreLevel5: getLocalStorage("highScoreLevel5") || 0,
-      highScoreLevel6: getLocalStorage("highScoreLevel6") || 0,
-      highScoreLevel7: getLocalStorage("highScoreLevel7") || 0,
-      highScoreLevel8: getLocalStorage("highScoreLevel8") || 0,
-      highScoreLevel9: getLocalStorage("highScoreLevel9") || 0,
-      highScoreLevel10: getLocalStorage("highScoreLevel10") || 0,
+      highScoreCopacabana: getLocalStorage("highScoreCopacabana") || 0,
+      highScoreSantaMonica: getLocalStorage("highScoreSantaMonica") || 0,
 
       /**
        * Time
@@ -117,8 +103,26 @@ export default create(
 
               setLocalStorage("highScoreRandom", highScoreRandom);
               return { phase: "ended", endTime, highScoreRandom };
-            } else if (state.mode === "adventure") {
-              // TODO: Implement levels high score
+            } else if (state.mode === "tour") {
+              if (state.level === "copacabana") {
+                const highScoreCopacabana =
+                  state.highScoreCopacabana === 0 ||
+                  score < state.highScoreCopacabana
+                    ? score
+                    : state.highScoreCopacabana;
+
+                setLocalStorage("highScoreCopacabana", highScoreCopacabana);
+                return { phase: "ended", endTime, highScoreCopacabana };
+              } else if (state.level === "santamonica") {
+                const highScoreSantaMonica =
+                  state.highScoreSantaMonica === 0 ||
+                  score < state.highScoreSantaMonica
+                    ? score
+                    : state.highScoreSantaMonica;
+
+                setLocalStorage("highScoreSantaMonica", highScoreSantaMonica);
+                return { phase: "ended", endTime, highScoreSantaMonica };
+              }
             }
           }
           return {};
