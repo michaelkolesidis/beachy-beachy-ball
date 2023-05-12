@@ -21,7 +21,7 @@ export default function Ball() {
   const rapierWorld = world.raw();
 
   const [smoothedCameraPosition] = useState(
-    () => new THREE.Vector3(0, 50, 200) // initial camera position
+    () => new THREE.Vector3(0, 0, 200) // initial camera position
   );
   const [smoothedCameraTarget] = useState(() => new THREE.Vector3());
 
