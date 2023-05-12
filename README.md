@@ -1,4 +1,4 @@
-![Beachy Beachy Ball Logo](./images/beachy_beachy_ball_background.png)
+![Beachy Beachy Ball Logo](./images/logo_bg_blue.png)
 
 ## Features
 
@@ -37,6 +37,8 @@ A non-exhaustive list of all the software that was used during the development o
 - Mozilla Firefox
 
 ## Gameplay and Rules
+
+The player controls a beach ball, and has to hit the star at the end of the level in order to win, while avoiding a variety of obstacles. If the ball falls off the level, the game restarts with the ball in its initial position.
 
 ## License
 
