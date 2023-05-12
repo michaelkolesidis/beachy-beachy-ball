@@ -5,7 +5,6 @@ import { RigidBody } from "@react-three/rapier";
 import * as THREE from "three";
 import useGame from "../../stores/useGame.js";
 import Star from "./Star.jsx";
-import Finished from "./Finished.jsx";
 
 const boxGeometry = new THREE.BoxGeometry(1, 1, 1);
 
@@ -373,6 +372,7 @@ export function BlockDoubleSlidingWall({ position = [0, 0, 0] }) {
 
 export function BlockEnd({ position = [0, 0, 0] }) {
   const end = useGame((state) => state.end);
+  const phase = useGame((state) => state.phase);
 
   function onHit() {
     end();
@@ -380,7 +380,6 @@ export function BlockEnd({ position = [0, 0, 0] }) {
 
   return (
     <group position={position}>
-      <Finished position={[0, 1, 0.5]} />
       <mesh
         geometry={boxGeometry}
         material={beachMaterial}

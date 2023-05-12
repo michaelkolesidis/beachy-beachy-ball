@@ -42,9 +42,15 @@ export default function MainMenu() {
 
       <div className="main-menu-about-section">
         <div className="main-menu-about">© 2023 Michael Kolesidis.</div>
-        <div className="main-menu-about">Licensed under the GNU AGPL 3.0</div>
+        <div className="main-menu-about">Licensed under GNU AGPL 3.0</div>
       </div>
-      <img className="author-logo" src={MichaelLogo} />
+      <a href="https://michaelkolesidis.com" target="_blank">
+        <img
+          className="author-logo"
+          src={MichaelLogo}
+          alt="Author's logo"
+        ></img>
+      </a>
     </div>
   );
 }

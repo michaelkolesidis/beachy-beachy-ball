@@ -55,12 +55,6 @@ export default function Interface() {
     };
   }, []);
 
-  // document.addEventListener("keydown", (e) => {
-  //   if (e.code === "KeyR") {
-  //     restart();
-  //   }
-  // });
-
   return (
     <div className="interface">
       {/* Logo */}
@@ -68,12 +62,13 @@ export default function Interface() {
       {/* Restart */}
       {phase === "ended" && (
         <div className="restart">
-          <div>Play Again</div>
+          <div className="finished">Finished!</div>
           <img
             src="./icons/replay.png"
             className="restart-button"
             onClick={restart}
           />
+          <div>Play Again</div>
         </div>
       )}
       {/* Control Buttons (top-right) */}

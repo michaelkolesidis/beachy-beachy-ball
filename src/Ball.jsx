@@ -21,7 +21,7 @@ export default function Ball() {
   const rapierWorld = world.raw();
 
   const [smoothedCameraPosition] = useState(
-    () => new THREE.Vector3(0, -5, -20) // initial camera position
+    () => new THREE.Vector3(0, 50, 200) // initial camera position
   );
   const [smoothedCameraTarget] = useState(() => new THREE.Vector3());
 
@@ -147,12 +147,12 @@ export default function Ball() {
     }
   });
 
-  function onHit() {
-    // console.log("Ball hit something!")
-    // hitSound.currentTime = 0
-    // hitSound.volume = Math.random() * 0.1
-    // hitSound.play()
-  }
+  // function onHit() {
+  //   console.log("Ball hit something!")
+  //   hitSound.currentTime = 0
+  //   hitSound.volume = Math.random() * 0.1
+  //   hitSound.play()
+  // }
 
   return (
     <RigidBody
