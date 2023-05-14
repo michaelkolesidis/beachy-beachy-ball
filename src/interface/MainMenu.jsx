@@ -49,11 +49,19 @@ export default function MainMenu() {
         >
           Tour
         </div>
+        <div
+          className={`main-menu-selection ${
+            mode === "adventure" ? "main-menu-selected" : ""
+          }`}
+          onClick={() => setMode("adventure")}
+        >
+          Adventure
+        </div>
       </div>
 
       {mode === "tour" && (
         <>
-          <div className="main-menu-section-title">Level</div>
+          <div className="main-menu-section-title">Beach</div>
           <div className="main-menu-selection-area">
             <div
               className={`main-menu-selection ${
@@ -78,8 +86,11 @@ export default function MainMenu() {
               Santa Monica
             </div>
           </div>
+          <div className="coming-soon">More beaches coming soon!</div>
         </>
       )}
+
+      {mode === "adventure" && <div className="coming-soon">Coming soon!</div>}
 
       <div className="main-menu-about-section">
         <div className="main-menu-about">© 2023 Michael Kolesidis.</div>

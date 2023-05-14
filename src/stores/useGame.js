@@ -25,7 +25,7 @@ export default create(
       /**
        * Mode
        */
-      mode: getLocalStorage("mode") || "random", // "random", "tour"
+      mode: getLocalStorage("mode") || "random", // "random", "tour", "adventure"
       setMode: (gameMode) => {
         setLocalStorage("mode", gameMode);
         set(() => {

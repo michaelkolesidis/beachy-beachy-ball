@@ -119,6 +119,32 @@ body,
   border: 5px dashed white;
 }
 
+.coming-soon {
+  font-size: 25px;
+  margin-top: 30px;
+  max-width: 20ch;
+  text-align: center;
+  transform: rotateZ(-7.5deg);
+  animation: flash 0.5s infinite;
+}
+
+@keyframes flash {
+  0% {
+    display: none;
+    opacity: 0;
+  }
+
+  90% {
+    display: block;
+    opacity: 0.99;
+  }
+
+  100% {
+    display: block;
+    opacity: 1;
+  }
+}
+
 .main-menu-about-section {
   position: absolute;
   bottom: 0;
