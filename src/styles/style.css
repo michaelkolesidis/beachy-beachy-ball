@@ -68,22 +68,25 @@ body,
 
 .woodmark {
   width: 220px;
+  margin-bottom: 100px;
 }
 
-.play-button {
+.main-menu-button {
   color: var(--blue);
   background-color: var(--white);
+  width: 220px;
+  text-align: center;
   font-size: 60px;
   height: 60px;
   line-height: 60px;
   padding: 20px 60px 10px 60px;
   border-radius: 50px;
-  margin: 100px 0 10px 0;
+  margin: 20px 0;
   cursor: pointer;
   transition: scale 0.4s 0.2s cubic-bezier(0.19, 1.51, 0.29, 0.99);
 }
 
-.play-button:hover {
+.main-menu-button:hover {
   scale: 1.1;
 }
 
