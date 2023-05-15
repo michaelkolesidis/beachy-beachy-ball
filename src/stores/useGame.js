@@ -14,10 +14,10 @@ export default create(
        * Is the player in the game or in the main menu?
        */
       isInGame: false,
-      proceedToGame: () => {
+      setIsInGame: (inOrOut) => {
         set(() => {
           return {
-            isInGame: true,
+            isInGame: inOrOut,
           };
         });
       },

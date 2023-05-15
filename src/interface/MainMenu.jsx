@@ -19,12 +19,12 @@ export default function MainMenu() {
     setLevel,
     difficulty,
     setDifficulty,
-    proceedToGame,
+    setIsInGame,
   } = useGame();
 
   document.addEventListener("keydown", (e) => {
     if (e.code === "Enter") {
-      proceedToGame();
+      setIsInGame(true);
     }
   });
 
@@ -32,7 +32,7 @@ export default function MainMenu() {
     <div className="main-menu">
       <img className="logo-ball" src={LogoBall} />
       <img className="woodmark" src={Woodmark} />
-      <div className="play-button" onClick={() => proceedToGame()}>
+      <div className="play-button" onClick={() => setIsInGame(true)}>
         Play
       </div>
 
@@ -100,6 +100,17 @@ export default function MainMenu() {
               }}
             >
               Hard
+            </div>
+            <div
+              className={`main-menu-selection ${
+                parseInt(difficulty) === 10 ? "main-menu-selected" : ""
+              }`}
+              onClick={() => {
+                setDifficulty(10);
+                setLocalStorage("difficulty", 10);
+              }}
+            >
+              Evil
             </div>
           </div>
 
@@ -235,7 +246,19 @@ export default function MainMenu() {
             >
               Hard
             </div>
+            <div
+              className={`main-menu-selection ${
+                parseInt(difficulty) === 10 ? "main-menu-selected" : ""
+              }`}
+              onClick={() => {
+                setDifficulty(10);
+                setLocalStorage("difficulty", 10);
+              }}
+            >
+              Evil
+            </div>
           </div>
+
           <div className="main-menu-section-title">Beach</div>
           <div className="main-menu-selection-area">
             <div

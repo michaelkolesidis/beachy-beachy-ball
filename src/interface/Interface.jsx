@@ -12,7 +12,7 @@ import Logo from "../assets/logo_white.svg";
 
 export default function Interface() {
   const time = useRef();
-  const { mode, setMode, restart, phase } = useGame();
+  const { mode, setMode, restart, phase, setIsInGame } = useGame();
   const { audio, toggleAudio } = useAudio();
   const forward = useKeyboardControls((state) => state.forward);
   const backward = useKeyboardControls((state) => state.backward);
@@ -172,7 +172,14 @@ export default function Interface() {
             <div className="modal-main">
               <div className="section-title">Mode</div>
               <div className="mode-area">{modeOptions}</div>
-              <div className="section-title">Data</div>
+              <div
+                className="modal-button"
+                onClick={() => {
+                  console.log("High Scores");
+                }}
+              >
+                High Scores
+              </div>
               <div
                 className="modal-button"
                 onClick={() => {
@@ -180,6 +187,38 @@ export default function Interface() {
                 }}
               >
                 Clear Data
+              </div>
+              <div
+                className="modal-button"
+                onClick={() => {
+                  console.log("Help");
+                }}
+              >
+                Help
+              </div>
+              <div
+                className="modal-button"
+                onClick={() => {
+                  console.log("Credits");
+                }}
+              >
+                Credits
+              </div>
+              <div
+                className="modal-button"
+                onClick={() => {
+                  setIsInGame(false);
+                }}
+              >
+                Main Menu
+              </div>
+              <div
+                className="modal-button"
+                onClick={() => {
+                  setIsModalOpen(false);
+                }}
+              >
+                Back
               </div>
             </div>
             <div className="modal-about-area">
