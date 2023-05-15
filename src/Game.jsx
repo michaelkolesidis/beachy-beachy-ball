@@ -10,7 +10,6 @@ import Lights from "./Lights.jsx";
 import { RandomLevel, TourLevel } from "./level/Level.jsx";
 
 import Ball from "./Ball.jsx";
-import Effects from "./Effects.jsx";
 import useGame from "./stores/useGame.js";
 import useAudio from "./stores/useAudio.js";
 import { SoundManager } from "./utils/SoundManager.jsx";
@@ -58,7 +57,6 @@ export default function Experience() {
         <Ball />
         <SoundManager />
       </Physics>
-      <Effects />
     </>
   );
 }
