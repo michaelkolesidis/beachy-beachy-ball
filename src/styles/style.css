@@ -249,7 +249,7 @@ body,
   justify-content: space-between;
   width: 100%;
   position: absolute;
-  bottom: 10px;
+  bottom: 30px;
   pointer-events: none;
 }
 
@@ -257,7 +257,8 @@ body,
 /* TIME    */
 /***********/
 .time-container {
-  display: block;
+  display: flex;
+  flex-direction: column;
 }
 
 .time-label {
@@ -267,12 +268,22 @@ body,
 
 .time {
   width: 200px;
-  height: 100px;
+  height: 3vh;
   color: #ffffff;
   font-size: 6vh;
   padding: 0 50px 30px 0;
   text-align: left;
   letter-spacing: 3px;
+}
+
+/************/
+/* MODE     */
+/************/
+.mode {
+  /* position: absolute; */
+  /* bottom: 3vh; */
+  font-size: 2vh;
+  text-align: left;
 }
 
 /***********/
@@ -339,16 +350,6 @@ body,
 
 .controls .key.active {
   background: #ffffffa2;
-}
-
-/************/
-/* MODE     */
-/************/
-.mode {
-  position: absolute;
-  bottom: 17.5%;
-  font-size: 25px;
-  text-align: left;
 }
 
 /*******************/

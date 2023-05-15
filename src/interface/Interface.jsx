@@ -160,7 +160,7 @@ export default function Interface() {
         <div className="time-container">
           <div className="time-label">Time</div>
           <div className="time" ref={time}></div>
-        <div className="mode">{mode}</div>
+          <div className="mode">{mode}</div>
         </div>
       </div>
       {/* Modal */}
