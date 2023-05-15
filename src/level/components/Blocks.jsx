@@ -400,7 +400,7 @@ export function BlockDoubleSlidingWall({ position = [0, 0, 0] }) {
  * BlockEnd
  */
 export function BlockEnd({ position = [0, 0, 0] }) {
-  const end = useGame((state) => state.end);
+  const { end } = useGame();
 
   function onHit() {
     end();

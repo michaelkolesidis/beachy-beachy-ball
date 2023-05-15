@@ -26,8 +26,7 @@ export default function Ball() {
   );
   const [smoothedCameraTarget] = useState(() => new THREE.Vector3());
 
-  const start = useGame((state) => state.start);
-  const restart = useGame((state) => state.restart);
+  const { start, restart } = useGame();
 
   const jump = () => {
     const origin = body.current.translation();

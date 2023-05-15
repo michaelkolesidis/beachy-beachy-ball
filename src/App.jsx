@@ -13,14 +13,6 @@ import MainMenu from "./interface/MainMenu.jsx";
 // Prevent right click
 document.addEventListener("contextmenu", (e) => e.preventDefault());
 
-// Keep console clear of logs
-// const log = console.log;
-// console.log = () => {};
-// const warn = console.warn;
-// console.warn = () => {};
-// const error = console.error;
-// console.error = () => {};
-
 export default function App() {
   const isInGame = useGame((state) => state.isInGame);
 

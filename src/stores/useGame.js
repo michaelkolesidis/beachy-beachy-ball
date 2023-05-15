@@ -38,7 +38,15 @@ export default create(
       /**
        * Random level generation
        */
-      blocksCount: 10,
+      blocksCount: parseInt(getLocalStorage("blocksCount")) || 10,
+      setBlocksCount: (count) => {
+        set(() => {
+          setLocalStorage("blocksCount", count);
+          return {
+            blocksCount: count,
+          };
+        });
+      },
       blocksSeed: 0,
 
       /**

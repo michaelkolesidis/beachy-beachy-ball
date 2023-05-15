@@ -73,10 +73,8 @@ export function RandomLevel({
 }
 
 export function TourLevel({}) {
-  const level = useGame((state) => state.level);
-
+  const { level } = useGame();
   let currentLevel;
-
   switch (level) {
     case "copacabana":
       currentLevel = 0;
@@ -87,7 +85,6 @@ export function TourLevel({}) {
   }
 
   let name, count, blocks;
-
   name = levels[currentLevel].name;
   count = levels[currentLevel].count;
   blocks = levels[currentLevel].blocks;

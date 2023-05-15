@@ -10,12 +10,8 @@ import MichaelLogo from "../assets/mm_white.svg";
 import { getLocalStorage, setLocalStorage } from "../stores/utils.js";
 
 export default function MainMenu() {
-  const mode = useGame((state) => state.mode);
-  const setMode = useGame((state) => state.setMode);
-  const level = useGame((state) => state.level);
-  const setLevel = useGame((state) => state.setLevel);
-
-  const proceedToGame = useGame((state) => state.proceedToGame);
+  const { mode, setMode, setBlocksCount, level, setLevel, proceedToGame } =
+    useGame();
 
   document.addEventListener("keydown", (e) => {
     if (e.code === "Enter") {
@@ -58,6 +54,25 @@ export default function MainMenu() {
           Adventure
         </div>
       </div>
+
+      {mode === "random" && (
+        <>
+          <div className="main-menu-section-title">Number of Blocks</div>
+          <div className="main-menu-selection-area">
+            <div
+              className={`main-menu-selection ${
+                level === "copacabana" ? "main-menu-selected" : ""
+              }`}
+              onClick={() => {
+                setLevel("copacabana");
+                setLocalStorage("level", "copacabana");
+              }}
+            >
+              5
+            </div>
+          </div>
+        </>
+      )}
 
       {mode === "tour" && (
         <>
