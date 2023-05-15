@@ -249,15 +249,19 @@ body,
   justify-content: space-between;
   width: 100%;
   position: absolute;
-  bottom: -10px;
+  bottom: 10px;
   pointer-events: none;
 }
 
 /***********/
 /* TIME    */
 /***********/
+.time-container {
+  display: block;
+}
+
 .time-label {
-  padding-top: 30px;
+  padding-top: 0px;
   font-size: 3vh;
 }
 
@@ -312,7 +316,7 @@ body,
 /* CONTROLS */
 /************/
 .controls {
-  padding: 0 80px;
+  padding: 10px 60px;
 }
 
 .controls .raw {
@@ -335,6 +339,16 @@ body,
 
 .controls .key.active {
   background: #ffffffa2;
+}
+
+/************/
+/* MODE     */
+/************/
+.mode {
+  position: absolute;
+  bottom: 17.5%;
+  font-size: 25px;
+  text-align: left;
 }
 
 /*******************/

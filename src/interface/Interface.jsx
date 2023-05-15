@@ -12,24 +12,52 @@ import Logo from "../assets/logo_white.svg";
 
 export default function Interface() {
   const time = useRef();
-
-  const restart = useGame((state) => state.restart);
-  const phase = useGame((state) => state.phase);
-
+  const { mode, setMode, restart, phase } = useGame();
+  const { audio, toggleAudio } = useAudio();
   const forward = useKeyboardControls((state) => state.forward);
   const backward = useKeyboardControls((state) => state.backward);
   const leftward = useKeyboardControls((state) => state.leftward);
   const rightward = useKeyboardControls((state) => state.rightward);
   const jump = useKeyboardControls((state) => state.jump);
 
-  const audio = useAudio((state) => state.audio);
-  const toggleAudio = useAudio((state) => state.toggleAudio);
+  /**
+   * Mode
+   */
+  const [modeName, setModeName] = useState(mode);
+
+  useEffect(() => {
+    switch (mode) {
+      case "random":
+        setModeName("Random");
+        break;
+      case "tour":
+        setModeName("Tour");
+        break;
+      case "adventure":
+        setModeName("Adventure");
+        break;
+    }
+  }, [mode]);
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
   const clearData = () => {
     window.localStorage.clear();
   };
+
+  const handleRestart = () => {
+    restart();
+  };
+
+  const [selectedMode, setSelectedMode] = useState(null);
+
+  useEffect(() => {
+    setSelectedMode(modeOptions.find((m) => m.name === mode));
+  }, []);
+
+  function handleModeClick(mode) {
+    setSelectedMode(mode);
+  }
 
   useEffect(() => {
     const unsubscribeEffect = addEffect(() => {
@@ -55,6 +83,29 @@ export default function Interface() {
       unsubscribeEffect();
     };
   }, []);
+
+  let modes = [
+    { id: "0", text: "Random", name: "random" },
+    { id: "1", text: "Tour", name: "tour" },
+    { id: "2", text: "Adventure", name: "adventure" },
+  ];
+
+  const modeOptions = modes.map((mode) => (
+    <div
+      key={mode.id}
+      className={`mode-selection ${
+        selectedMode && selectedMode.name === mode.name ? "selected-mode" : ""
+      }`}
+      onClick={() => {
+        handleModeClick(mode);
+        setMode(`${mode.name}`);
+        window.localStorage.setItem("mode", `"${mode.name}"`);
+        handleRestart();
+      }}
+    >
+      {mode.text}
+    </div>
+  ));
 
   return (
     <div className="interface">
@@ -106,9 +157,10 @@ export default function Interface() {
           </div>
         </div>
         {/* Time */}
-        <div>
+        <div className="time-container">
           <div className="time-label">Time</div>
           <div className="time" ref={time}></div>
+        <div className="mode">{mode}</div>
         </div>
       </div>
       {/* Modal */}
@@ -119,7 +171,7 @@ export default function Interface() {
 
             <div className="modal-main">
               <div className="section-title">Mode</div>
-              <div className="mode-area">Coming Soon!</div>
+              <div className="mode-area">{modeOptions}</div>
               <div className="section-title">Data</div>
               <div
                 className="modal-button"
