@@ -36,6 +36,19 @@ export default create(
       },
 
       /**
+       * Difficulty
+       */
+      difficulty: parseInt(getLocalStorage("difficulty")) || 1, // 1, 1.25, 1.5, 2
+      setDifficulty: (dif) => {
+        setLocalStorage("difficulty", dif);
+        set(() => {
+          return {
+            difficulty: dif,
+          };
+        });
+      },
+
+      /**
        * Random level generation
        */
       blocksCount: parseInt(getLocalStorage("blocksCount")) || 10,

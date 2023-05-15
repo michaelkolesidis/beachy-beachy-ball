@@ -10,8 +10,17 @@ import MichaelLogo from "../assets/mm_white.svg";
 import { getLocalStorage, setLocalStorage } from "../stores/utils.js";
 
 export default function MainMenu() {
-  const { mode, setMode, setBlocksCount, level, setLevel, proceedToGame } =
-    useGame();
+  const {
+    mode,
+    setMode,
+    blocksCount,
+    setBlocksCount,
+    level,
+    setLevel,
+    difficulty,
+    setDifficulty,
+    proceedToGame,
+  } = useGame();
 
   document.addEventListener("keydown", (e) => {
     if (e.code === "Enter") {
@@ -60,15 +69,130 @@ export default function MainMenu() {
           <div className="main-menu-section-title">Number of Blocks</div>
           <div className="main-menu-selection-area">
             <div
-              className={`main-menu-selection ${
-                level === "copacabana" ? "main-menu-selected" : ""
+              className={`main-menu-selection main-menu-selection-short ${
+                blocksCount === 5 ? "main-menu-selected" : ""
               }`}
               onClick={() => {
-                setLevel("copacabana");
-                setLocalStorage("level", "copacabana");
+                setBlocksCount(5);
+                setLocalStorage("blocksCount", 5);
               }}
             >
               5
+            </div>
+            <div
+              className={`main-menu-selection main-menu-selection-short ${
+                blocksCount === 10 ? "main-menu-selected" : ""
+              }`}
+              onClick={() => {
+                setBlocksCount(10);
+                setLocalStorage("blocksCount", 10);
+              }}
+            >
+              10
+            </div>
+
+            <div
+              className={`main-menu-selection main-menu-selection-short ${
+                blocksCount === 15 ? "main-menu-selected" : ""
+              }`}
+              onClick={() => {
+                setBlocksCount(15);
+                setLocalStorage("blocksCount", 15);
+              }}
+            >
+              15
+            </div>
+            <div
+              className={`main-menu-selection main-menu-selection-short ${
+                blocksCount === 20 ? "main-menu-selected" : ""
+              }`}
+              onClick={() => {
+                setBlocksCount(20);
+                setLocalStorage("blocksCount", 20);
+              }}
+            >
+              20
+            </div>
+            <div
+              className={`main-menu-selection main-menu-selection-short ${
+                blocksCount === 30 ? "main-menu-selected" : ""
+              }`}
+              onClick={() => {
+                setBlocksCount(30);
+                setLocalStorage("blocksCount", 30);
+              }}
+            >
+              30
+            </div>
+            <div
+              className={`main-menu-selection main-menu-selection-short ${
+                blocksCount === 40 ? "main-menu-selected" : ""
+              }`}
+              onClick={() => {
+                setBlocksCount(40);
+                setLocalStorage("blocksCount", 40);
+              }}
+            >
+              40
+            </div>
+            <div
+              className={`main-menu-selection main-menu-selection-short ${
+                blocksCount === 50 ? "main-menu-selected" : ""
+              }`}
+              onClick={() => {
+                setBlocksCount(50);
+                setLocalStorage("blocksCount", 50);
+              }}
+            >
+              50
+            </div>
+            <div
+              className={`main-menu-selection main-menu-selection-short ${
+                blocksCount === 100 ? "main-menu-selected" : ""
+              }`}
+              onClick={() => {
+                setBlocksCount(100);
+                setLocalStorage("blocksCount", 100);
+              }}
+            >
+              100
+            </div>
+          </div>
+
+          <div className="main-menu-section-title">Difficulty</div>
+          <div className="main-menu-selection-area">
+            <div
+              className={`main-menu-selection ${
+                parseInt(difficulty) === 1 ? "main-menu-selected" : ""
+              }`}
+              onClick={() => {
+                setDifficulty(1);
+                setLocalStorage("difficulty", 1);
+              }}
+            >
+              Easy
+            </div>
+            <div
+              className={`main-menu-selection ${
+                parseInt(difficulty) === 2 ? "main-menu-selected" : ""
+              }`}
+              onClick={() => {
+                setDifficulty(2);
+                setLocalStorage("difficulty", 2);
+              }}
+            >
+              Medium
+            </div>
+            <div
+              className={`main-menu-selection ${
+                parseInt(difficulty) === 3 ? "main-menu-selected" : ""
+              }`}
+              onClick={() => {
+                setDifficulty(3);
+                setLocalStorage("difficulty", 3);
+              }}
+            >
+              Hard
             </div>
           </div>
         </>

@@ -111,6 +111,11 @@ body,
   transition: scale 0.4s 0.2s cubic-bezier(0.19, 1.51, 0.29, 0.99);
 }
 
+.main-menu-selection-short {
+  width: 50px;
+  margin: 5px 10px;
+}
+
 .main-menu-selection:hover {
   scale: 1.1;
 }
