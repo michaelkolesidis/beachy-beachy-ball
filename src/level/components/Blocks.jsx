@@ -168,7 +168,7 @@ export function BlockLimbo({ position = [0, 0, 0], difficulty }) {
 
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
-    const y = Math.sin(1.5 * time + timeOffset) + 1.3;
+    const y = Math.sin(1.5 * difficulty * time + timeOffset) + 1.3;
     obstacle.current.setNextKinematicTranslation({
       x: position[0],
       y: position[1] + y,
@@ -224,7 +224,7 @@ export function BlockDoubleLimbo({ position = [0, 0, 0], difficulty }) {
       z: position[2],
     });
 
-    const y2 = -0.3 * Math.sin(1.5 * time + timeOffset) + 1.3;
+    const y2 = -0.3 * Math.sin(1.5 * difficulty * time + timeOffset) + 1.3;
     obstacle2.current.setNextKinematicTranslation({
       x: position[0],
       y: position[1] + y2 - 0.8,
