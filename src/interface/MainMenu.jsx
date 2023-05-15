@@ -66,6 +66,43 @@ export default function MainMenu() {
 
       {mode === "random" && (
         <>
+          <div className="main-menu-section-title">Difficulty</div>
+          <div className="main-menu-selection-area">
+            <div
+              className={`main-menu-selection ${
+                parseInt(difficulty) === 1 ? "main-menu-selected" : ""
+              }`}
+              onClick={() => {
+                setDifficulty(1);
+                setLocalStorage("difficulty", 1);
+              }}
+            >
+              Easy
+            </div>
+            <div
+              className={`main-menu-selection ${
+                parseInt(difficulty) === 3 ? "main-menu-selected" : ""
+              }`}
+              onClick={() => {
+                setDifficulty(3);
+                setLocalStorage("difficulty", 3);
+              }}
+            >
+              Medium
+            </div>
+            <div
+              className={`main-menu-selection ${
+                parseInt(difficulty) === 5 ? "main-menu-selected" : ""
+              }`}
+              onClick={() => {
+                setDifficulty(5);
+                setLocalStorage("difficulty", 5);
+              }}
+            >
+              Hard
+            </div>
+          </div>
+
           <div className="main-menu-section-title">Number of Blocks</div>
           <div className="main-menu-selection-area">
             <div
@@ -158,7 +195,11 @@ export default function MainMenu() {
               100
             </div>
           </div>
+        </>
+      )}
 
+      {mode === "tour" && (
+        <>
           <div className="main-menu-section-title">Difficulty</div>
           <div className="main-menu-selection-area">
             <div
@@ -174,17 +215,6 @@ export default function MainMenu() {
             </div>
             <div
               className={`main-menu-selection ${
-                parseInt(difficulty) === 2 ? "main-menu-selected" : ""
-              }`}
-              onClick={() => {
-                setDifficulty(2);
-                setLocalStorage("difficulty", 2);
-              }}
-            >
-              Medium
-            </div>
-            <div
-              className={`main-menu-selection ${
                 parseInt(difficulty) === 3 ? "main-menu-selected" : ""
               }`}
               onClick={() => {
@@ -192,14 +222,20 @@ export default function MainMenu() {
                 setLocalStorage("difficulty", 3);
               }}
             >
+              Medium
+            </div>
+            <div
+              className={`main-menu-selection ${
+                parseInt(difficulty) === 5 ? "main-menu-selected" : ""
+              }`}
+              onClick={() => {
+                setDifficulty(5);
+                setLocalStorage("difficulty", 5);
+              }}
+            >
               Hard
             </div>
           </div>
-        </>
-      )}
-
-      {mode === "tour" && (
-        <>
           <div className="main-menu-section-title">Beach</div>
           <div className="main-menu-selection-area">
             <div

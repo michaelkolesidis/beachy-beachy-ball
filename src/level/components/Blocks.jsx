@@ -46,10 +46,10 @@ export function BlockEmpty({ position = [0, 0, 0] }) {
 /**
  * BlockSpinner
  */
-export function BlockSpinner({ position = [0, 0, 0] }) {
+export function BlockSpinner({ position = [0, 0, 0], difficulty }) {
   const obstacle = useRef();
   const [speed] = useState(
-    () => (Math.random() + 1.5) * (Math.random() < 0.5 ? -1 : 1)
+    () => (Math.random() + difficulty + 0.5) * (Math.random() < 0.5 ? -1 : 1)
   );
 
   useFrame((state) => {
@@ -94,12 +94,12 @@ export function BlockSpinner({ position = [0, 0, 0] }) {
 /**
  * BlockDoubleSpinner
  */
-export function BlockDoubleSpinner({ position = [0, 0, 0] }) {
+export function BlockDoubleSpinner({ position = [0, 0, 0], difficulty }) {
   const obstacle1 = useRef();
   const obstacle2 = useRef();
 
   const [direction] = useState(() => (Math.random() < 0.5 ? -1 : 1));
-  const [speed] = useState(() => 2 * direction);
+  const [speed] = useState(() => difficulty * 2 * direction);
 
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
@@ -162,13 +162,13 @@ export function BlockDoubleSpinner({ position = [0, 0, 0] }) {
 /**
  * BlockLimbo
  */
-export function BlockLimbo({ position = [0, 0, 0] }) {
+export function BlockLimbo({ position = [0, 0, 0], difficulty }) {
   const obstacle = useRef();
   const [timeOffset] = useState(() => Math.random() * Math.PI * 2);
 
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
-    const y = 1.1 * Math.sin(1.5 * time + timeOffset) + 1.3;
+    const y = Math.sin(1.5 * time + timeOffset) + 1.3;
     obstacle.current.setNextKinematicTranslation({
       x: position[0],
       y: position[1] + y,
@@ -210,14 +210,14 @@ export function BlockLimbo({ position = [0, 0, 0] }) {
 /**
  * BlockDoubleLimbo
  */
-export function BlockDoubleLimbo({ position = [0, 0, 0] }) {
+export function BlockDoubleLimbo({ position = [0, 0, 0], difficulty }) {
   const obstacle1 = useRef();
   const obstacle2 = useRef();
   const [timeOffset] = useState(() => Math.random() * Math.PI * 2);
 
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
-    const y1 = 0.3 * Math.sin(1.5 * time + timeOffset) + 1.3;
+    const y1 = 0.3 * Math.sin(difficulty * 1.5 * time + timeOffset) + 1.3;
     obstacle1.current.setNextKinematicTranslation({
       x: position[0],
       y: position[1] + y1 + 0.2,
@@ -280,13 +280,13 @@ export function BlockDoubleLimbo({ position = [0, 0, 0] }) {
 /**
  * BlockSlidingWall
  */
-export function BlockSlidingWall({ position = [0, 0, 0] }) {
+export function BlockSlidingWall({ position = [0, 0, 0], difficulty }) {
   const obstacle = useRef();
   const [timeOffset] = useState(() => Math.random() * Math.PI * 2);
 
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
-    const x = Math.sin(1.5 * time + timeOffset) * 1.25;
+    const x = Math.sin(difficulty * 1.5 * time + timeOffset) * 1.25;
     obstacle.current.setNextKinematicTranslation({
       x: position[0] + x,
       y: position[1] + 0.75,
@@ -328,7 +328,7 @@ export function BlockSlidingWall({ position = [0, 0, 0] }) {
 /**
  * BlockDoubleSlidingWall
  */
-export function BlockDoubleSlidingWall({ position = [0, 0, 0] }) {
+export function BlockDoubleSlidingWall({ position = [0, 0, 0], difficulty }) {
   const wall1 = useRef();
   const wall2 = useRef();
 
@@ -336,14 +336,14 @@ export function BlockDoubleSlidingWall({ position = [0, 0, 0] }) {
 
   useFrame((state) => {
     const time = state.clock.getElapsedTime();
-    const x1 = Math.sin(2 * time + timeOffset) * 0.5 + 1;
+    const x1 = Math.sin(difficulty * 2 * time + timeOffset) * 0.5 + 1;
     wall1.current.setNextKinematicTranslation({
       x: position[0] + x1,
       y: position[1] + 0.75,
       z: position[2],
     });
 
-    const x2 = -Math.sin(2 * time + timeOffset) * 0.5 - 1;
+    const x2 = -Math.sin(difficulty * 2 * time + timeOffset) * 0.5 - 1;
     wall2.current.setNextKinematicTranslation({
       x: position[0] + x2,
       y: position[1] + 0.75,

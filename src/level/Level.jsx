@@ -46,6 +46,7 @@ export function RandomLevel({
     BlockDoubleLimbo,
   ],
   seed = 0,
+  difficulty = 1,
 }) {
   const blocks = useMemo(() => {
     const blocks = [];
@@ -63,7 +64,11 @@ export function RandomLevel({
       <BlockEmpty position={[0, 0, 0]} />
 
       {blocks.map((Block, index) => (
-        <Block key={index} position={[0, 0, -(index + 1) * 4]} />
+        <Block
+          key={index}
+          position={[0, 0, -(index + 1) * 4]}
+          difficulty={difficulty}
+        />
       ))}
       <BlockEmpty position={[0, 0, -(count + 1) * 4]} />
       <BlockEnd position={[0, 0, -(count + 2) * 4]} />
@@ -72,7 +77,9 @@ export function RandomLevel({
   );
 }
 
-export function TourLevel({}) {
+export function TourLevel({
+  difficulty = 1,
+}) {
   const { level } = useGame();
   let currentLevel;
   switch (level) {
@@ -94,7 +101,7 @@ export function TourLevel({}) {
       <BlockEmpty position={[0, 0, 0]} />
 
       {blocks.map((Block, index) => (
-        <Block key={index} position={[0, 0, -(index + 1) * 4]} />
+        <Block key={index} position={[0, 0, -(index + 1) * 4]} difficulty={difficulty} />
       ))}
       <BlockEmpty position={[0, 0, -(count + 1) * 4]} />
       <BlockEnd position={[0, 0, -(count + 2) * 4]} />

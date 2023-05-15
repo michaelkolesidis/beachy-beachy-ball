@@ -18,10 +18,10 @@ import { useState } from "react";
 export default function Experience() {
   const mode = useGame((state) => state.mode);
   const restart = useGame((state) => state.restart);
-  const toggleAudio = useAudio((state) => state.toggleAudio);
-
+  const difficulty = useGame((state) => state.difficulty);
   const blocksCount = useGame((state) => state.blocksCount);
   const blocksSeed = useGame((state) => state.blocksSeed);
+  const toggleAudio = useAudio((state) => state.toggleAudio);
 
   const [showPerformance, setShowperformance] = useState(false);
 
@@ -48,10 +48,13 @@ export default function Experience() {
           <RandomLevel
             count={blocksCount}
             seed={blocksSeed}
+            difficulty={difficulty}
             // types={[BlockSpinner]}
           />
         ) : (
-          <TourLevel />
+          <TourLevel
+          difficulty={difficulty}
+          />
         )}
 
         <Ball />
