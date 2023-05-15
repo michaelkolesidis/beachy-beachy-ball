@@ -16,6 +16,7 @@ The core technologies used are _JavaScript_ and _WebGL_. The following libraries
 | Vite              |   MIT   | Frontend development tooling                 |
 
 ## Screenshots
+![Screenshot](./screenshots/screenshot_01.png)
 
 ## Roadmap
 
