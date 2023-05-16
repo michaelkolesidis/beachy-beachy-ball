@@ -236,13 +236,17 @@ body,
 }
 
 .control-button {
-  border: 3px solid #ffffff;
+  border: clamp(5px, 0.4vw, 7px)  solid #ffffff;
   border-radius: 60px;
   padding: 8px;
   margin-left: 20px;
   line-height: 10px;
   cursor: pointer;
   transition: opacity 0.5s cubic-bezier(0.19, 1.51, 0.29, 0.99);
+}
+
+.control-button > img {
+  width: clamp(40px, 2.5vw, 120px); 
 }
 
 .control-button:hover {
