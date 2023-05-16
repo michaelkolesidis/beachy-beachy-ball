@@ -144,7 +144,10 @@ export default function Interface() {
       <div className="bottom">
         {/* Controls */}
         <div className="controls">
-          <div className="raw">
+          {/* Mode */}
+          <div className="bottom-label">Mode</div>
+          <div className="mode">{mode}</div>
+          {/* <div className="raw">
             <div className={`key ${forward ? "active" : ""}`}></div>
           </div>
           <div className="raw">
@@ -154,13 +157,15 @@ export default function Interface() {
           </div>
           <div className="raw">
             <div className={`key large ${jump ? "active" : ""}`}></div>
-          </div>
+          </div> */}
         </div>
         {/* Time */}
-        <div className="time-container">
-          <div className="time-label">Time</div>
-          <div className="time" ref={time}></div>
-          <div className="mode">{mode}</div>
+        <div className="bottom-right">
+          <div className="time-container">
+            <div className="bottom-label">Time</div>
+            <div className="time" ref={time}></div>
+            {/* <div className="mode">{mode}</div> */}
+          </div>
         </div>
       </div>
       {/* Modal */}

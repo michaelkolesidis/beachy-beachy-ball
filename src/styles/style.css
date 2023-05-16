@@ -215,8 +215,8 @@ body,
 }
 
 .logo {
-  width: clamp(85px, 6vw, 120px); 
-  padding: 1em;
+  width: clamp(85px, 6vw, 120px);
+  padding: clamp(1.5em, 1vw, 3em);
   transform: rotateZ(-10deg);
   pointer-events: none;
 }
@@ -236,7 +236,7 @@ body,
 }
 
 .control-button {
-  border: clamp(5px, 0.4vw, 7px)  solid #ffffff;
+  border: clamp(5px, 0.4vw, 7px) solid #ffffff;
   border-radius: 60px;
   padding: 8px;
   margin-left: 20px;
@@ -246,7 +246,7 @@ body,
 }
 
 .control-button > img {
-  width: clamp(40px, 2.5vw, 120px); 
+  width: clamp(40px, 2.5vw, 120px);
 }
 
 .control-button:hover {
@@ -261,41 +261,82 @@ body,
   justify-content: space-between;
   width: 100%;
   position: absolute;
-  bottom: 30px;
+  bottom: 1vh;
   pointer-events: none;
 }
 
 /***********/
 /* TIME    */
 /***********/
-.time-container {
+.bottom-right {
   display: flex;
+  justify-content: center;
+  align-items: center;
   flex-direction: column;
 }
 
-.time-label {
-  padding-top: 0px;
-  font-size: 3vh;
+.time-container {
+  display: flex;
+  justify-content:flex-start;
+    align-items: center;
+  flex-direction: column;
+  padding-right: 4vw;
+  width: 14vw;
+}
+
+.bottom-label {
+  font-size: clamp(1.5em, 1.75vw, 5em);
+  letter-spacing: 3px;
+  /* height: 3vw; */
+  width: 100%;
 }
 
 .time {
-  width: 200px;
-  height: 3vh;
   color: #ffffff;
-  font-size: 6vh;
-  padding: 0 50px 30px 0;
-  text-align: left;
+  font-size: clamp(4em, 5vw, 20em);
   letter-spacing: 3px;
+  width: 100%;
+  line-height: clamp(0.85em, 5vh, 5em);
+  text-align: left;
 }
 
 /************/
 /* MODE     */
 /************/
 .mode {
-  /* position: absolute; */
-  /* bottom: 3vh; */
-  font-size: 2vh;
-  text-align: left;
+  color: #ffffff;
+  font-size: clamp(2em, 3vw, 10em);
+  line-height: clamp(0.5em, 3vh, 2.5em);
+  width: 100%;
+}
+
+/************/
+/* CONTROLS */
+/************/
+.controls {
+  padding: clamp(2em, 1vw, 3em);
+}
+
+.controls .raw {
+  display: flex;
+  justify-content: center;
+}
+
+.controls .key {
+  width: clamp(3em, 2vw, 2.5em);
+  height: clamp(3em, 2vw, 2.5em);
+  margin: clamp(0.2em, 0.15vw, 1.5em);
+  border: clamp(0.5em, 0.3vw, 1.5em) solid #ffffff;
+  background: #ffffff25;
+  border-radius: clamp(1em, 0.75vw, 2em);
+}
+
+.controls .key.large {
+  width: clamp(12em, 7vw, 50em);
+}
+
+.controls .key.active {
+  background: #ffffffb8;
 }
 
 /***********/
@@ -333,35 +374,6 @@ body,
 
 .restart-button:hover {
   transform: rotateZ(-180deg);
-}
-
-/************/
-/* CONTROLS */
-/************/
-.controls {
-  padding: 10px 60px;
-}
-
-.controls .raw {
-  display: flex;
-  justify-content: center;
-}
-
-.controls .key {
-  width: 25px;
-  height: 25px;
-  margin: 3px;
-  border: 4px solid #ffffff;
-  background: #ffffff25;
-  border-radius: 10px;
-}
-
-.controls .key.large {
-  width: 110px;
-}
-
-.controls .key.active {
-  background: #ffffffa2;
 }
 
 /*******************/
@@ -460,8 +472,16 @@ body,
 }
 
 @media only screen and (max-width: 900px) {
-  .logo {
-    /* width: 9vh; */
+  .bottom {
+    justify-content: end;
+  }
+
+  .controls {
+    display: none;
+  }
+
+  .time-container {
+    margin: 2vh 3vw;
   }
 
   .individual-score {
