@@ -52,8 +52,8 @@ body,
 }
 
 .logo-ball {
-  width: 200px;
-  margin: 100px 0 10px 0;
+  width: 15vh;
+  margin: 5vh 0 0.5vh 0;
   animation: spin 3s cubic-bezier(0.19, 1.51, 0.29, 0.99) infinite;
 }
 
@@ -67,21 +67,21 @@ body,
 }
 
 .woodmark {
-  width: 220px;
-  margin-bottom: 100px;
+  width: 15vh;
+  margin-bottom: 5vh;
 }
 
 .main-menu-button {
   color: var(--blue);
   background-color: var(--white);
-  width: 220px;
+  width: 14vh;
   text-align: center;
-  font-size: 60px;
+  font-size: 3vh;
   height: 60px;
   line-height: 60px;
-  padding: 20px 60px 10px 60px;
+  padding: 1.5vh 3vh 1vh 3vh;
   border-radius: 50px;
-  margin: 20px 0;
+  margin: 0.85vh 0;
   cursor: pointer;
   transition: scale 0.4s 0.2s cubic-bezier(0.19, 1.51, 0.29, 0.99);
 }
@@ -91,8 +91,8 @@ body,
 }
 
 .main-menu-section-title {
-  margin-top: 30px;
-  font-size: 40px;
+  margin-top: 0.5vh;
+  font-size: 2.75vh;
 }
 
 .main-menu-selection-area {
@@ -100,12 +100,12 @@ body,
 }
 
 .main-menu-selection {
-  font-size: 25px;
-  width: 220px;
+  font-size: 2vh;
+  width: 20vh;
   text-align: center;
-  margin: 5px 0;
+  margin: 1vh -0.5vh;
   cursor: pointer;
-  padding: 10px 20px 5px 20px;
+  padding: 1vh 2vh;
   box-sizing: border-box;
   border-radius: 50px;
   display: flex;
@@ -157,16 +157,16 @@ body,
   position: absolute;
   bottom: 0;
   left: 0;
-  font-size: 25px;
-  margin: 20px;
+  margin: 2vh;
+  font-size: 2.2vh;
 }
 
 .author-logo {
   position: absolute;
   bottom: 0;
   right: 0;
-  width: 70px;
-  margin: 20px;
+  width: 6vh;
+  margin: 2vh;
 }
 
 /******************/
