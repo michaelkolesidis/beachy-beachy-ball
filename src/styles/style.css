@@ -128,9 +128,9 @@ body,
 }
 
 .coming-soon {
-  font-size: 25px;
-  margin-top: 30px;
-  max-width: 20ch;
+  font-size: 2.5vh;
+  margin-top: 1.5vh;
+  max-width: 15ch;
   text-align: center;
   transform: rotateZ(-7.5deg);
   animation: flash 0.5s infinite;
@@ -215,7 +215,7 @@ body,
 }
 
 .logo {
-  width: 70px;
+  width: clamp(85px, 6vw, 120px); 
   padding: 1em;
   transform: rotateZ(-10deg);
   pointer-events: none;
@@ -457,7 +457,7 @@ body,
 
 @media only screen and (max-width: 900px) {
   .logo {
-    width: 9vh;
+    /* width: 9vh; */
   }
 
   .individual-score {
