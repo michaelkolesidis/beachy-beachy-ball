@@ -14,11 +14,11 @@ export default function Interface() {
   const time = useRef();
   const { mode, setMode, restart, phase, setIsInGame } = useGame();
   const { audio, toggleAudio } = useAudio();
-  const forward = useKeyboardControls((state) => state.forward);
-  const backward = useKeyboardControls((state) => state.backward);
-  const leftward = useKeyboardControls((state) => state.leftward);
-  const rightward = useKeyboardControls((state) => state.rightward);
-  const jump = useKeyboardControls((state) => state.jump);
+  // const forward = useKeyboardControls((state) => state.forward);
+  // const backward = useKeyboardControls((state) => state.backward);
+  // const leftward = useKeyboardControls((state) => state.leftward);
+  // const rightward = useKeyboardControls((state) => state.rightward);
+  // const jump = useKeyboardControls((state) => state.jump);
 
   /**
    * Mode
