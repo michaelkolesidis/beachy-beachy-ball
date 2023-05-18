@@ -487,10 +487,10 @@
     suspend-react "^0.0.8"
     zustand "^3.7.1"
 
-"@react-three/postprocessing@^2.11.0":
-  version "2.11.0"
-  resolved "https://registry.yarnpkg.com/@react-three/postprocessing/-/postprocessing-2.11.0.tgz#68020e1674c30e57c1a5463fe60311e52a7639de"
-  integrity sha512-PNfcOqE2EqoDbdFT5XtxuJJP7hAzijnJ3tZHxCmyH1qNyFN4ioif3XU+OR+NQLMHehH2tGMIHsQU/lFqREzDPQ==
+"@react-three/postprocessing@^2.11.4":
+  version "2.11.4"
+  resolved "https://registry.yarnpkg.com/@react-three/postprocessing/-/postprocessing-2.11.4.tgz#037216af417a9db552a86123f136ff62b8344727"
+  integrity sha512-I/AnS73TFPTw9KqZTgqdCpNW9zmnQt3cMkM2fH50OvFuimCV7mAALr1JCt4uuUMtHwSJXBQVMulSurrgq3LEyA==
   dependencies:
     maath "^0.5.3"
     postprocessing "^6.30.2"

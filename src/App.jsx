@@ -4,6 +4,7 @@
 // https://www.gnu.org/licenses/gpl-3.0.html
 
 import { Canvas } from "@react-three/fiber";
+// import { EffectComposer, Pixelation } from "@react-three/postprocessing";
 import useGame from "./stores/useGame.js";
 import Game from "./Game.jsx";
 import Interface from "./interface/Interface";
@@ -29,6 +30,9 @@ export default function App() {
               position: [2.5, 4, 6],
             }}
           >
+            {/* <EffectComposer>
+              <Pixelation granularity={7} />
+            </EffectComposer> */}
             <Game />
           </Canvas>
           <Interface />
