@@ -7,6 +7,9 @@ import { useEffect, useMemo } from "react";
 import useAudio from "../stores/useAudio";
 import useGame from "../stores/useGame";
 
+const backgroundSound = new Audio("./sounds/background.mp3");
+backgroundSound.loop = true;
+
 function SoundManager() {
   const audio = useAudio((state) => state.audio);
   const gamePhase = useGame((state) => state.phase);
@@ -14,11 +17,6 @@ function SoundManager() {
   const successSound = useMemo(() => {
     const sound = new Audio("./sounds/success.mp3");
     sound.volume = 0.2;
-    return sound;
-  }, []);
-  const backgroundSound = useMemo(() => {
-    const sound = new Audio("./sounds/background.mp3");
-    sound.loop = true;
     return sound;
   }, []);
 
