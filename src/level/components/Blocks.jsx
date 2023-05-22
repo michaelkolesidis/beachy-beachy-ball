@@ -18,7 +18,7 @@ const obstacleMaterial = new THREE.MeshStandardMaterial({ color: "tomato" });
 
 export const blockDimensions = {
   width: 4.2,
-  height: 0.2,
+  height: 0.3,
   length: 4,
 };
 
@@ -31,7 +31,7 @@ export function BlockEmpty({ position = [0, 0, 0] }) {
       <mesh
         geometry={boxGeometry}
         material={beachMaterial}
-        position={[0, -0.1, 0]}
+        position={[0, -0.2, 0]}
         scale={[
           blockDimensions.width,
           blockDimensions.height,
@@ -64,7 +64,7 @@ export function BlockSpinner({ position = [0, 0, 0], difficulty }) {
       <mesh
         geometry={boxGeometry}
         material={beachMaterial}
-        position={[0, -0.1, 0]}
+        position={[0, -0.2, 0]}
         scale={[
           blockDimensions.width,
           blockDimensions.height,
@@ -117,7 +117,7 @@ export function BlockDoubleSpinner({ position = [0, 0, 0], difficulty }) {
       <mesh
         geometry={boxGeometry}
         material={beachMaterial}
-        position={[0, -0.1, 0]}
+        position={[0, -0.2, 0]}
         scale={[
           blockDimensions.width,
           blockDimensions.height,
@@ -181,7 +181,7 @@ export function BlockLimbo({ position = [0, 0, 0], difficulty }) {
       <mesh
         geometry={boxGeometry}
         material={beachMaterial}
-        position={[0, -0.1, 0]}
+        position={[0, -0.2, 0]}
         scale={[
           blockDimensions.width,
           blockDimensions.height,
@@ -237,7 +237,7 @@ export function BlockDoubleLimbo({ position = [0, 0, 0], difficulty }) {
       <mesh
         geometry={boxGeometry}
         material={beachMaterial}
-        position={[0, -0.1, 0]}
+        position={[0, -0.2, 0]}
         scale={[
           blockDimensions.width,
           blockDimensions.height,
@@ -278,6 +278,86 @@ export function BlockDoubleLimbo({ position = [0, 0, 0], difficulty }) {
 }
 
 /**
+ * BlockPlatformLimbo
+ */
+export function BlockPlatformLimbo({ position = [0, 0, 0], difficulty }) {
+  const obstacle = useRef();
+  const [timeOffset] = useState(() => Math.random() * Math.PI * 2);
+
+  useFrame((state) => {
+    const time = state.clock.getElapsedTime();
+    const y = Math.sin(1.5 * difficulty * time + timeOffset) + 1.3;
+    obstacle.current.setNextKinematicTranslation({
+      x: position[0],
+      y: position[1] + y,
+      z: position[2],
+    });
+  });
+
+  return (
+    <group position={position}>
+      <mesh
+        geometry={boxGeometry}
+        material={beachMaterial}
+        position={[0, -0.2, 0]}
+        scale={[
+          blockDimensions.width,
+          blockDimensions.height,
+          blockDimensions.length,
+        ]}
+        receiveShadow
+      />
+      <RigidBody
+        ref={obstacle}
+        type="kinematicPosition"
+        restitution={0.2}
+        friction={0}
+      >
+        <mesh
+          geometry={boxGeometry}
+          material={obstacleMaterial}
+          scale={[4, 0.3, 3]}
+          castShadow
+          receiveShadow
+        />
+      </RigidBody>
+    </group>
+  );
+}
+
+/**
+ * BlockRamp
+ */
+export function BlockRamp({ position = [0, 0, 0], difficulty }) {
+  return (
+    <group position={position}>
+      <mesh
+        geometry={boxGeometry}
+        material={beachMaterial}
+        position={[0, -0.2, 0]}
+        scale={[
+          blockDimensions.width,
+          blockDimensions.height,
+          blockDimensions.length,
+        ]}
+        receiveShadow
+      />
+      <RigidBody type="kinematicPosition" restitution={0.2} friction={0}>
+        <mesh
+          geometry={boxGeometry}
+          material={obstacleMaterial}
+          position={[0, 0.4, 0]}
+          scale={[4, 0.3, 1.5]}
+          rotation={[0.75, 0, 0]}
+          castShadow
+          receiveShadow
+        />
+      </RigidBody>
+    </group>
+  );
+}
+
+/**
  * BlockSlidingWall
  */
 export function BlockSlidingWall({ position = [0, 0, 0], difficulty }) {
@@ -299,7 +379,7 @@ export function BlockSlidingWall({ position = [0, 0, 0], difficulty }) {
       <mesh
         geometry={boxGeometry}
         material={beachMaterial}
-        position={[0, -0.1, 0]}
+        position={[0, -0.2, 0]}
         scale={[
           blockDimensions.width,
           blockDimensions.height,
@@ -356,7 +436,7 @@ export function BlockDoubleSlidingWall({ position = [0, 0, 0], difficulty }) {
       <mesh
         geometry={boxGeometry}
         material={beachMaterial}
-        position={[0, -0.1, 0]}
+        position={[0, -0.2, 0]}
         scale={[
           blockDimensions.width,
           blockDimensions.height,
@@ -411,7 +491,7 @@ export function BlockEnd({ position = [0, 0, 0] }) {
       <mesh
         geometry={boxGeometry}
         material={beachMaterial}
-        position={[0, -0.1, 0]}
+        position={[0, -0.2, 0]}
         scale={[
           blockDimensions.width,
           blockDimensions.height,

@@ -23,7 +23,7 @@ export default function Experience() {
   const blocksSeed = useGame((state) => state.blocksSeed);
   const toggleAudio = useAudio((state) => state.toggleAudio);
 
-  const [showPerformance, setShowperformance] = useState(false);
+  const [showPerformance, setShowperformance] = useState(true);
 
   document.addEventListener("keydown", (e) => {
     // Restart game

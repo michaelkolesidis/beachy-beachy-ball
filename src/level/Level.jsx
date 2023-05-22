@@ -14,6 +14,8 @@ import {
   BlockDoubleSpinner,
   BlockLimbo,
   BlockDoubleLimbo,
+  // BlockPlatformLimbo,
+  // BlockRamp,
   BlockSlidingWall,
   BlockDoubleSlidingWall,
   BlockEnd,
@@ -44,6 +46,8 @@ export function RandomLevel({
     BlockDoubleSlidingWall,
     BlockLimbo,
     BlockDoubleLimbo,
+    // BlockPlatformLimbo,
+    // BlockRamp
   ],
   seed = 0,
   difficulty = 1,
@@ -77,9 +81,7 @@ export function RandomLevel({
   );
 }
 
-export function TourLevel({
-  difficulty = 1,
-}) {
+export function TourLevel({ difficulty = 1 }) {
   const { level } = useGame();
   let currentLevel;
   switch (level) {
@@ -101,7 +103,11 @@ export function TourLevel({
       <BlockEmpty position={[0, 0, 0]} />
 
       {blocks.map((Block, index) => (
-        <Block key={index} position={[0, 0, -(index + 1) * 4]} difficulty={difficulty} />
+        <Block
+          key={index}
+          position={[0, 0, -(index + 1) * 4]}
+          difficulty={difficulty}
+        />
       ))}
       <BlockEmpty position={[0, 0, -(count + 1) * 4]} />
       <BlockEnd position={[0, 0, -(count + 2) * 4]} />
