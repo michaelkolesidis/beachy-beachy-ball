@@ -47,6 +47,17 @@ A non-exhaustive list of all the software that was used during the development o
 
 The player controls a beach ball, and has to hit the star at the end of the level in order to win, while avoiding a variety of obstacles. If the ball falls off the level, the game restarts with the ball in its initial position.
 
+### Controls
+
+| Left columns |       Right columns       |
+| :----------: | :-----------------------: |
+| ←↑→↓ or WASD |           Move            |
+|    Space     |           Jump            |
+|    Enter     | Start game (on main menu) |
+|      M       |        Mute/Unmute        |
+|      R       |          Restart          |
+|      P       |  Show performance stats   |
+
 ## License
 
 <a href="https://www.gnu.org/licenses/agpl-3.0.html"><img src="https://upload.wikimedia.org/wikipedia/commons/0/06/AGPLv3_Logo.svg" height="100px" /></a>
