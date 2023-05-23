@@ -13,34 +13,47 @@ import Ball from "./Ball.jsx";
 import useGame from "./stores/useGame.js";
 import useAudio from "./stores/useAudio.js";
 import { SoundManager } from "./utils/SoundManager.jsx";
-import { useState } from "react";
+import { useEffect } from "react";
 
 export default function Experience() {
   const mode = useGame((state) => state.mode);
+  const performance = useGame((state) => state.performance);
+  const showPerformance = useGame((state) => state.showPerformance);
   const restart = useGame((state) => state.restart);
   const difficulty = useGame((state) => state.difficulty);
   const blocksCount = useGame((state) => state.blocksCount);
   const blocksSeed = useGame((state) => state.blocksSeed);
   const toggleAudio = useAudio((state) => state.toggleAudio);
 
-  const [showPerformance, setShowperformance] = useState(true);
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      // Restart game
+      if (e.code === "KeyR") {
+        restart();
+      }
 
-  document.addEventListener("keydown", (e) => {
-    // Restart game
-    if (e.code === "KeyR") {
-      restart();
-    }
+      // Toggle sound
+      else if (e.code === "KeyM") {
+        toggleAudio();
+      }
 
-    // Toggle sound
-    if (e.code === "KeyM") {
-      toggleAudio();
-    }
-  });
+      // Toggle performance
+      else if (e.code === "KeyP") {
+        showPerformance();
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [restart, toggleAudio, showPerformance]);
 
   return (
     <>
       <color args={["#00bfff"]} attach="background" />
-      {showPerformance && <Perf position="bottom-left" />}
+      {performance && <Perf position="bottom-left" />}
       <Physics debug={false}>
         <Lights />
 
@@ -52,9 +65,7 @@ export default function Experience() {
             // types={[BlockSpinner]}
           />
         ) : (
-          <TourLevel
-          difficulty={difficulty}
-          />
+          <TourLevel difficulty={difficulty} />
         )}
 
         <Ball />

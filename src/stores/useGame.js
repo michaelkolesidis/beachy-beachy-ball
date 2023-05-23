@@ -23,6 +23,18 @@ export default create(
       },
 
       /**
+       * Show performance
+       */
+      performance: false,
+      showPerformance: () => {
+        set(() => {
+          return {
+            performance: true,
+          };
+        });
+      },
+
+      /**
        * Mode
        */
       mode: getLocalStorage("mode") || "random", // "random", "tour", "adventure"
