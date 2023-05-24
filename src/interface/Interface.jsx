@@ -41,6 +41,21 @@ export default function Interface() {
 
   const [isModalOpen, setIsModalOpen] = useState(false);
 
+  useEffect(() => {
+    const handleKeyDown = (e) => {
+      // Restart game
+      if (e.code === "Escape") {
+        setIsModalOpen((prev) => !prev);
+      }
+    };
+
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [isModalOpen, setIsModalOpen]);
+
   const clearData = () => {
     window.localStorage.clear();
   };

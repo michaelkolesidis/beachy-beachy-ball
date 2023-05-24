@@ -49,14 +49,15 @@ The player controls a beach ball, and has to hit the star at the end of the leve
 
 ### Controls
 
-| Left columns |       Right columns       |
-| :----------: | :-----------------------: |
-| ←↑→↓ or WASD |           Move            |
-|    Space     |           Jump            |
-|    Enter     | Start game (on main menu) |
-|      M       |        Mute/Unmute        |
-|      R       |          Restart          |
-|      P       |  Show performance stats   |
+|  Button(s)   |           Action            |
+| :----------: | :-------------------------: |
+| ←↑→↓ or WASD |            Move             |
+|    Space     |            Jump             |
+|    Enter     |  Start game (on main menu)  |
+|      M       |         Mute/Unmute         |
+|      R       |           Restart           |
+|      P       |   Show performance stats    |
+|     Esc      | Toggle menu modal (in game) |
 
 ## License
 
