@@ -26,23 +26,6 @@ The core technologies used are _JavaScript_ and _WebGL_. The following libraries
 
 ## Roadmap
 
-## Assets
-
-All the assets used (3D models, images etc.) are either using Creative Commons / Public Domain or they were created by me.
-
-## Software Used
-
-A non-exhaustive list of all the software that was used during the development of _Beachy Beachy Ball_.
-
-- Visual Studio Code
-- Figma
-- Blender
-- Adobe Photoshop
-- Inkscape
-- Google Chrome
-- Microsoft Edge
-- Mozilla Firefox
-
 ## Gameplay and Rules
 
 The player controls a beach ball, and has to hit the star at the end of the level in order to win, while avoiding a variety of obstacles. If the ball falls off the level, the game restarts with the ball in its initial position.
@@ -58,6 +41,23 @@ The player controls a beach ball, and has to hit the star at the end of the leve
 |      R       |           Restart           |
 |      P       |   Show performance stats    |
 |     Esc      | Toggle menu modal (in game) |
+
+## Software Used
+
+A non-exhaustive list of all the software that was used during the development of _Beachy Beachy Ball_.
+
+- Visual Studio Code
+- Figma
+- Blender
+- Adobe Photoshop
+- Inkscape
+- Google Chrome
+- Microsoft Edge
+- Mozilla Firefox
+
+## Assets
+
+All the assets used (3D models, images etc.) are either using Creative Commons / Public Domain or they were created by me.
 
 ## License
 
