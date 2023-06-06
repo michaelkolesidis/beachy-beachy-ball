@@ -35,6 +35,11 @@ export default create(
       },
 
       /**
+       * Pixelate screen
+       */
+      // pixelated: false,
+
+      /**
        * Mode
        */
       mode: getLocalStorage("mode") || "random", // "random", "tour", "adventure"

@@ -16,6 +16,7 @@ document.addEventListener("contextmenu", (e) => e.preventDefault());
 
 export default function App() {
   const isInGame = useGame((state) => state.isInGame);
+  // const pixalated = useGame((state) => state.pixalated);
 
   return (
     <>
@@ -30,9 +31,11 @@ export default function App() {
               position: [2.5, 4, 6],
             }}
           >
-            {/* <EffectComposer>
-              <Pixelation granularity={7} />
-            </EffectComposer> */}
+            {/* {pixalated && (
+              <EffectComposer>
+                <Pixelation granularity={5} />
+              </EffectComposer>
+            )} */}
             <Game />
           </Canvas>
           <Interface />
