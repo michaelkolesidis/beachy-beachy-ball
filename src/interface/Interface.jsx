@@ -193,7 +193,7 @@ export default function Interface() {
               <div className="section-title">Mode</div>
               <div className="mode-area">{modeOptions}</div>
               <div
-                className="modal-button"
+                className="modal-button disabled"
                 onClick={() => {
                   console.log("High Scores");
                 }}
@@ -209,7 +209,7 @@ export default function Interface() {
                 Clear Data
               </div>
               <div
-                className="modal-button"
+                className="modal-button disabled"
                 onClick={() => {
                   console.log("Help");
                 }}
@@ -217,7 +217,7 @@ export default function Interface() {
                 Help
               </div>
               <div
-                className="modal-button"
+                className="modal-button disabled"
                 onClick={() => {
                   console.log("Credits");
                 }}

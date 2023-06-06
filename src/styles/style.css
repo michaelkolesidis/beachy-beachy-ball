@@ -455,6 +455,11 @@ body,
   margin-bottom: 1.5vh;
 }
 
+.disabled {
+  cursor: not-allowed;
+  opacity: 0.15;
+}
+
 .mode-selection {
   transition: transform 0.75s 0.1s cubic-bezier(0.19, 1.51, 0.29, 0.99);
 }

@@ -19,7 +19,6 @@ export default function Ball() {
   const body = useRef();
   const [subscribeKeys, getKeys] = useKeyboardControls();
   const { rapier, world } = useRapier();
-  const rapierWorld = world.raw();
 
   const [smoothedCameraPosition] = useState(
     () => new THREE.Vector3(0, 0, 200) // initial camera position
@@ -33,7 +32,7 @@ export default function Ball() {
     origin.y -= 0.31;
     const direction = { x: 0, y: -1, z: 0 };
     const ray = new rapier.Ray(origin, direction);
-    const hit = rapierWorld.castRay(ray, 10, true); // true: considers everything as solid
+    const hit = world.castRay(ray, 10, true); // true: considers everything as solid
 
     if (hit.toi < 0.15) {
       body.current.applyImpulse({ x: 0, y: 0.75, z: 0 });
