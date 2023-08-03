@@ -6,7 +6,7 @@
 import { useState } from "react";
 import useGame from "../stores/useGame.js";
 import LogoBall from "../assets/logo_ball_stroke.svg";
-import Woodmark from "../assets/woodmark.svg";
+import Wordmark from "../assets/wordmark.svg";
 import MichaelLogo from "../assets/mm_white.svg";
 import { getLocalStorage, setLocalStorage } from "../stores/utils.js";
 
@@ -34,7 +34,7 @@ export default function MainMenu() {
   return (
     <div className="main-menu">
       <img className="logo-ball" src={LogoBall} />
-      <img className="woodmark" src={Woodmark} />
+      <img className="wordmark" src={Wordmark} />
       <div className="main-menu-button" onClick={() => setIsInGame(true)}>
         Play
       </div>
