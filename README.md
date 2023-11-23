@@ -59,6 +59,12 @@ A non-exhaustive list of all the software that was used during the development o
 
 All the assets used (3D models, images etc.) are either using Creative Commons / Public Domain or they were created by me.
 
+## 💖 Support the Project
+
+Thank you so much for your interest in my project! If you want to go a step further and support my open source work, buy me a coffee:
+
+<a href='https://ko-fi.com/michaelkolesidis' target='_blank'><img src='https://cdn.ko-fi.com/cdn/kofi1.png' style='border:0px;height:45px;' alt='Buy Me a Coffee at ko-fi.com' /></a>
+
 ## License
 
 <a href="https://www.gnu.org/licenses/agpl-3.0.html"><img src="https://upload.wikimedia.org/wikipedia/commons/0/06/AGPLv3_Logo.svg" height="100px" /></a>
