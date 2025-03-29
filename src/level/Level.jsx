@@ -1,12 +1,24 @@
-// Beachy Beachy Ball
-// Copyright (c) 2023 Michael Kolesidis <michael.kolesidis@gmail.com>
-// Licensed under the GNU Affero General Public License v3.0.
-// https://www.gnu.org/licenses/gpl-3.0.html
+/*
+ *  Beachy Beachy Ball
+ *  Copyright (c) Michael Kolesidis <michael.kolesidis@gmail.com>
+ *  GNU Affero General Public License v3.0
+ *
+ *  ATTENTION! FREE SOFTWARE
+ *  This website is free software (free as in freedom).
+ *  If you use any part of this code, you must make your entire project's source code
+ *  publicly available under the same license. This applies whether you modify the code
+ *  or use it as it is in your own project. This ensures that all modifications and
+ *  derivative works remain free software, so that everyone can benefit.
+ *  If you are not willing to comply with these terms, you must refrain from using any part of this code.
+ *
+ *  For full license terms and conditions, you can read the AGPL-3.0 here:
+ *  https://www.gnu.org/licenses/agpl-3.0.html
+ */
 
-import { useMemo } from "react";
-import { CuboidCollider, RigidBody } from "@react-three/rapier";
-import * as THREE from "three";
-import useGame from "../stores/useGame.js";
+import { useMemo } from 'react';
+import { CuboidCollider, RigidBody } from '@react-three/rapier';
+import * as THREE from 'three';
+import useGame from '../stores/useGame.js';
 import {
   blockDimensions,
   BlockEmpty,
@@ -19,8 +31,8 @@ import {
   BlockSlidingWall,
   BlockDoubleSlidingWall,
   BlockEnd,
-} from "./components/Blocks.jsx";
-import levels from "./components/Levels.jsx";
+} from './components/Blocks.jsx';
+import levels from './components/Levels.jsx';
 
 THREE.ColorManagement.enabled = true;
 
@@ -85,10 +97,10 @@ export function TourLevel({ difficulty = 1 }) {
   const { level } = useGame();
   let currentLevel;
   switch (level) {
-    case "copacabana":
+    case 'copacabana':
       currentLevel = 0;
       break;
-    case "santamonica":
+    case 'santamonica':
       currentLevel = 1;
       break;
   }

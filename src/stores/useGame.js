@@ -1,11 +1,23 @@
-// Beachy Beachy Ball
-// Copyright (c) 2023 Michael Kolesidis <michael.kolesidis@gmail.com>
-// Licensed under the GNU Affero General Public License v3.0.
-// https://www.gnu.org/licenses/gpl-3.0.html
+/*
+ *  Beachy Beachy Ball
+ *  Copyright (c) Michael Kolesidis <michael.kolesidis@gmail.com>
+ *  GNU Affero General Public License v3.0
+ *
+ *  ATTENTION! FREE SOFTWARE
+ *  This website is free software (free as in freedom).
+ *  If you use any part of this code, you must make your entire project's source code
+ *  publicly available under the same license. This applies whether you modify the code
+ *  or use it as it is in your own project. This ensures that all modifications and
+ *  derivative works remain free software, so that everyone can benefit.
+ *  If you are not willing to comply with these terms, you must refrain from using any part of this code.
+ *
+ *  For full license terms and conditions, you can read the AGPL-3.0 here:
+ *  https://www.gnu.org/licenses/agpl-3.0.html
+ */
 
-import { create } from "zustand";
-import { subscribeWithSelector } from "zustand/middleware";
-import { getLocalStorage, setLocalStorage } from "./utils";
+import { create } from 'zustand';
+import { subscribeWithSelector } from 'zustand/middleware';
+import { getLocalStorage, setLocalStorage } from './utils';
 
 export default create(
   subscribeWithSelector((set) => {
@@ -42,9 +54,9 @@ export default create(
       /**
        * Mode
        */
-      mode: getLocalStorage("mode") || "random", // "random", "tour", "adventure"
+      mode: getLocalStorage('mode') || 'random', // "random", "tour", "adventure"
       setMode: (gameMode) => {
-        setLocalStorage("mode", gameMode);
+        setLocalStorage('mode', gameMode);
         set(() => {
           return {
             mode: gameMode,
@@ -55,9 +67,9 @@ export default create(
       /**
        * Difficulty
        */
-      difficulty: parseInt(getLocalStorage("difficulty")) || 1, // 1, 1.25, 1.5, 2
+      difficulty: parseInt(getLocalStorage('difficulty')) || 1, // 1, 1.25, 1.5, 2
       setDifficulty: (dif) => {
-        setLocalStorage("difficulty", dif);
+        setLocalStorage('difficulty', dif);
         set(() => {
           return {
             difficulty: dif,
@@ -68,10 +80,10 @@ export default create(
       /**
        * Random level generation
        */
-      blocksCount: parseInt(getLocalStorage("blocksCount")) || 10,
+      blocksCount: parseInt(getLocalStorage('blocksCount')) || 10,
       setBlocksCount: (count) => {
         set(() => {
-          setLocalStorage("blocksCount", count);
+          setLocalStorage('blocksCount', count);
           return {
             blocksCount: count,
           };
@@ -82,10 +94,10 @@ export default create(
       /**
        * Level (tour)
        */
-      level: getLocalStorage("level") || "copacabana",
+      level: getLocalStorage('level') || 'copacabana',
       setLevel: (name) => {
         set(() => {
-          setLocalStorage("level", name);
+          setLocalStorage('level', name);
           return {
             level: name,
           };
@@ -95,9 +107,9 @@ export default create(
       /**
        * High scores
        */
-      highScoreRandom: getLocalStorage("highScoreRandom") || 0,
-      highScoreCopacabana: getLocalStorage("highScoreCopacabana") || 0,
-      highScoreSantaMonica: getLocalStorage("highScoreSantaMonica") || 0,
+      highScoreRandom: getLocalStorage('highScoreRandom') || 0,
+      highScoreCopacabana: getLocalStorage('highScoreCopacabana') || 0,
+      highScoreSantaMonica: getLocalStorage('highScoreSantaMonica') || 0,
 
       /**
        * Time
@@ -108,12 +120,12 @@ export default create(
       /**
        * Phases
        */
-      phase: "ready",
+      phase: 'ready',
 
       start: () => {
         set((state) => {
-          if (state.phase === "ready") {
-            return { phase: "playing", startTime: Date.now() };
+          if (state.phase === 'ready') {
+            return { phase: 'playing', startTime: Date.now() };
           }
           return {};
         });
@@ -121,8 +133,8 @@ export default create(
 
       restart: () => {
         set((state) => {
-          if (state.phase === "playing" || state.phase === "ended") {
-            return { phase: "ready", blocksSeed: Math.random() };
+          if (state.phase === 'playing' || state.phase === 'ended') {
+            return { phase: 'ready', blocksSeed: Math.random() };
           }
           return {};
         });
@@ -130,37 +142,37 @@ export default create(
 
       end: () => {
         set((state) => {
-          if (state.phase === "playing") {
+          if (state.phase === 'playing') {
             const endTime = Date.now();
             const score = endTime - state.startTime;
 
-            if (state.mode === "random") {
+            if (state.mode === 'random') {
               const highScoreRandom =
                 state.highScoreRandom === 0 || score < state.highScoreRandom
                   ? score
                   : state.highScoreRandom;
 
-              setLocalStorage("highScoreRandom", highScoreRandom);
-              return { phase: "ended", endTime, highScoreRandom };
-            } else if (state.mode === "tour") {
-              if (state.level === "copacabana") {
+              setLocalStorage('highScoreRandom', highScoreRandom);
+              return { phase: 'ended', endTime, highScoreRandom };
+            } else if (state.mode === 'tour') {
+              if (state.level === 'copacabana') {
                 const highScoreCopacabana =
                   state.highScoreCopacabana === 0 ||
                   score < state.highScoreCopacabana
                     ? score
                     : state.highScoreCopacabana;
 
-                setLocalStorage("highScoreCopacabana", highScoreCopacabana);
-                return { phase: "ended", endTime, highScoreCopacabana };
-              } else if (state.level === "santamonica") {
+                setLocalStorage('highScoreCopacabana', highScoreCopacabana);
+                return { phase: 'ended', endTime, highScoreCopacabana };
+              } else if (state.level === 'santamonica') {
                 const highScoreSantaMonica =
                   state.highScoreSantaMonica === 0 ||
                   score < state.highScoreSantaMonica
                     ? score
                     : state.highScoreSantaMonica;
 
-                setLocalStorage("highScoreSantaMonica", highScoreSantaMonica);
-                return { phase: "ended", endTime, highScoreSantaMonica };
+                setLocalStorage('highScoreSantaMonica', highScoreSantaMonica);
+                return { phase: 'ended', endTime, highScoreSantaMonica };
               }
             }
           }

@@ -1,14 +1,26 @@
-// Beachy Beachy Ball
-// Copyright (c) 2023 Michael Kolesidis <michael.kolesidis@gmail.com>
-// Licensed under the GNU Affero General Public License v3.0.
-// https://www.gnu.org/licenses/gpl-3.0.html
+/*
+ *  Beachy Beachy Ball
+ *  Copyright (c) Michael Kolesidis <michael.kolesidis@gmail.com>
+ *  GNU Affero General Public License v3.0
+ *
+ *  ATTENTION! FREE SOFTWARE
+ *  This website is free software (free as in freedom).
+ *  If you use any part of this code, you must make your entire project's source code
+ *  publicly available under the same license. This applies whether you modify the code
+ *  or use it as it is in your own project. This ensures that all modifications and
+ *  derivative works remain free software, so that everyone can benefit.
+ *  If you are not willing to comply with these terms, you must refrain from using any part of this code.
+ *
+ *  For full license terms and conditions, you can read the AGPL-3.0 here:
+ *  https://www.gnu.org/licenses/agpl-3.0.html
+ */
 
-import { useKeyboardControls } from "@react-three/drei";
-import { useEffect, useRef, useState } from "react";
-import { addEffect } from "@react-three/fiber";
-import useGame from "../stores/useGame.js";
-import useAudio from "../stores/useAudio.js";
-import Logo from "../assets/logo_white.svg";
+import { useKeyboardControls } from '@react-three/drei';
+import { useEffect, useRef, useState } from 'react';
+import { addEffect } from '@react-three/fiber';
+import useGame from '../stores/useGame.js';
+import useAudio from '../stores/useAudio.js';
+import Logo from '../assets/logo_white.svg';
 
 export default function Interface() {
   const time = useRef();
@@ -27,14 +39,14 @@ export default function Interface() {
 
   useEffect(() => {
     switch (mode) {
-      case "random":
-        setModeName("Random");
+      case 'random':
+        setModeName('Random');
         break;
-      case "tour":
-        setModeName("Tour");
+      case 'tour':
+        setModeName('Tour');
         break;
-      case "adventure":
-        setModeName("Adventure");
+      case 'adventure':
+        setModeName('Adventure');
         break;
     }
   }, [mode]);
@@ -44,15 +56,15 @@ export default function Interface() {
   useEffect(() => {
     const handleKeyDown = (e) => {
       // Restart game
-      if (e.code === "Escape") {
+      if (e.code === 'Escape') {
         setIsModalOpen((prev) => !prev);
       }
     };
 
-    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener('keydown', handleKeyDown);
 
     return () => {
-      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener('keydown', handleKeyDown);
     };
   }, [isModalOpen, setIsModalOpen]);
 
@@ -80,9 +92,9 @@ export default function Interface() {
 
       let elapsedTime = 0;
 
-      if (state.phase === "playing") {
+      if (state.phase === 'playing') {
         elapsedTime = Date.now() - state.startTime;
-      } else if (state.phase === "ended") {
+      } else if (state.phase === 'ended') {
         elapsedTime = state.endTime - state.startTime;
       }
 
@@ -100,21 +112,21 @@ export default function Interface() {
   }, []);
 
   let modes = [
-    { id: "0", text: "Random", name: "random" },
-    { id: "1", text: "Tour", name: "tour" },
-    { id: "2", text: "Adventure", name: "adventure" },
+    { id: '0', text: 'Random', name: 'random' },
+    { id: '1', text: 'Tour', name: 'tour' },
+    { id: '2', text: 'Adventure', name: 'adventure' },
   ];
 
   const modeOptions = modes.map((mode) => (
     <div
       key={mode.id}
       className={`mode-selection ${
-        selectedMode && selectedMode.name === mode.name ? "selected-mode" : ""
+        selectedMode && selectedMode.name === mode.name ? 'selected-mode' : ''
       }`}
       onClick={() => {
         handleModeClick(mode);
         setMode(`${mode.name}`);
-        window.localStorage.setItem("mode", `"${mode.name}"`);
+        window.localStorage.setItem('mode', `"${mode.name}"`);
         handleRestart();
       }}
     >
@@ -127,7 +139,7 @@ export default function Interface() {
       {/* Logo */}
       <img className="logo" src={Logo} alt="Beachy Beachy Ball Logo" />
       {/* Restart */}
-      {phase === "ended" && (
+      {phase === 'ended' && (
         <div className="restart">
           <div className="finished">Finished!</div>
           <img
@@ -195,7 +207,7 @@ export default function Interface() {
               <div
                 className="modal-button disabled"
                 onClick={() => {
-                  console.log("High Scores");
+                  console.log('High Scores');
                 }}
               >
                 High Scores
@@ -211,7 +223,7 @@ export default function Interface() {
               <div
                 className="modal-button disabled"
                 onClick={() => {
-                  console.log("Help");
+                  console.log('Help');
                 }}
               >
                 Help
@@ -219,7 +231,7 @@ export default function Interface() {
               <div
                 className="modal-button disabled"
                 onClick={() => {
-                  console.log("Credits");
+                  console.log('Credits');
                 }}
               >
                 Credits
